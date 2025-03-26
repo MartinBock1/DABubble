@@ -5,7 +5,7 @@
     gap: $g;
 }
 
-@mixin font($ff: 'Inter', $fs: 16px, $fw: 100) {
+@mixin font($ff: 'Nunito', $fs: 16px, $fw: 400) {
     font-family: $ff;
     font-size: $fs;
     font-weight: $fw;
