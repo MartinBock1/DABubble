@@ -44,14 +44,14 @@ $DABubble-theme: mat.define-light-theme((
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
 }
 
 /* Für Firefox */
 @-moz-document url-prefix() {
   * {
     scrollbar-width: thin;
-    scrollbar-color: $gray $cream_white;
+    scrollbar-color: gray $ice_blue;
   }
 }
 
@@ -74,9 +74,11 @@ $DABubble-theme: mat.define-light-theme((
   }
 }
 
+html,
 body {
+  height: 100%;
   color: $black;
-  background-color: $cream-white;
+  background-color: $ice_blue;
 }
 
 .content_max {
@@ -93,19 +95,7 @@ a {
   display: none;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
 .error-message {
   @include font($fs: 10px, $fw: 400);
   color: $red;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,14 @@
+@import './../../../styles.scss';
+
+section {
+  height: 120px;
+  @include dFlex($jc:flex-start);
+}
+
+.logo {
+  width: 242px;
+  height: 70px;
+  margin-top: 25px;
+  margin-left: 45px;
+  margin-bottom: 16px;
+}
