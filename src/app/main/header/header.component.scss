@@ -2,13 +2,114 @@
 
 section {
   height: 120px;
-  @include dFlex($jc:flex-start);
+  @include dFlex($jc: flex-start);
 }
 
-.logo {
-  width: 242px;
+.content {
+  width: 100%;
+  @include dFlex($jc: flex-start, $ai: center, $g: 25px);
+}
+
+.logo-container {
+  width: 19.1vw;
+  max-width: 366px;
+  margin-right: 25px;
+
+  .logo {
+    width: 242px;
+    height: 70px;
+    margin-top: 25px;
+    margin-left: 45px;
+    margin-bottom: 16px;
+  }
+}
+
+.search-container {
+  @include dFlex($jc: space-between, $ai: center, $g: 25px);
+  flex: 1;
   height: 70px;
-  margin-top: 25px;
-  margin-left: 45px;
-  margin-bottom: 16px;
+  background-color: $white;
+  border-radius: 42px;
+  padding: 17.5px 45px;
+
+  .searchbar-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .search-field {
+    flex: 1;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    @include font($fs: 24px, $fw: 400);
+    cursor: text;
+
+    // Remove border on focus
+    &:focus {
+      outline: none;
+      border: none;
+      padding-left: 40px;
+    }
+
+    // Add the background image when the input is focused
+    &.active {
+      background-image: url('./../../../assets/img/icons/at-email-black.svg');
+      background-repeat: no-repeat;
+      background-position: left center;
+    }
+
+    // Remove placeholder when the input is focused
+    &:focus::placeholder {
+      visibility: hidden; // Hide the placeholder on focus
+    }
+
+    // Default placeholder styling
+    &::placeholder {
+      color: $placeholer_gray;
+    }
+
+  }
+}
+
+.profil-menu {
+  @include dFlex($jc: flex-end, $g: 20px);
+  width: 25.26vw;
+  max-width: 485px;
+  margin-right: 25px;
+  cursor: pointer;
+
+  >p {
+    @include font($fs: 32px, $fw: 700);
+  }
+
+  .char-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+
+  .arrow-listbox-down,
+  .arrow-listbox-down-hover {
+    width: 30px;
+    height: 30px;
+  }
+
+  .arrow-listbox-down-hover {
+    display: none;
+  }
+
+  &:hover {
+    >p {
+      color: $hover_purple_2;
+    }
+
+    .arrow-listbox-down {
+      display: none;
+    }
+
+    .arrow-listbox-down-hover {
+      display: block;
+    }
+  }    
 }

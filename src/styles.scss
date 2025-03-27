@@ -99,3 +99,8 @@ a {
   @include font($fs: 10px, $fw: 400);
   color: $red;
 }
+
+// Overlay global styles
+.cdk-overlay-container {
+  background-color: rgba(0, 0, 0, 0.4);
+}
