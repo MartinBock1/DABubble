@@ -8,19 +8,22 @@ section {
 .content {
   width: 100%;
   @include dFlex($jc: flex-start, $ai: center, $g: 25px);
+  position: relative;
 }
 
 .logo-container {
+  @include dFlex($jc: flex-start);
   width: 19.1vw;
   max-width: 366px;
   margin-right: 25px;
 
   .logo {
-    width: 242px;
-    height: 70px;
+    width: 100%;
+    height: auto;
     margin-top: 25px;
     margin-left: 45px;
     margin-bottom: 16px;
+    padding-right: 20px;
   }
 }
 
@@ -111,5 +114,50 @@ section {
     .arrow-listbox-down-hover {
       display: block;
     }
-  }    
+  }
+}
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.menu-container {
+  position: absolute;
+  top: 100px;
+  right: 25px;
+  background-color: $white;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 281px;
+  height: 181px;
+  padding: 30px;
+  @include dFlex($g: 15px);
+  flex-direction: column;
+
+  > p {
+    width: 222px;
+    height: 53px;
+    padding: 10px 0;
+    cursor: pointer;
+    @include dFlex();
+    @include font($fs: 24px, $fw: 600);
+
+    &:hover {
+      background-color: $ice_blue;
+      border-radius: 53px;
+    }
+  }
+
+
 }

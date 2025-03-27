@@ -1,7 +1,7 @@
 <section>
   <div class="content">
     <div class="logo-container">
-      <img class="logo" src="./../../../assets/img/logo.svg" alt="Logo" />
+      <img class="logo" src="assets/img/logo.svg" alt="Logo" />
     </div>
 
     <div class="search-container">
@@ -21,28 +21,33 @@
       />
     </div>
 
-    <div class="profil-menu" mat-button [matMenuTriggerFor]="menu">
+    <div class="profil-menu" (click)="toggleOverlay()">
       <p>Frederik Beck</p>
       <img
         class="char-icon"
-        src="./../../../assets/img/char-icons/frederik-beck.svg"
+        src="assets/img/char-icons/frederik-beck.svg"
         alt="Char Icon"
       />
       <img
         class="arrow-listbox-down"
-        src="./../../../assets/img/icons/arrow-listbox-down-black.svg"
+        src="assets/img/icons/arrow-listbox-down-black.svg"
         alt="Arrow down"
       />
       <img
         class="arrow-listbox-down-hover"
-        src="./../../../assets/img/icons/arrow-listbox-down-hover-purple.svg"
+        src="assets/img/icons/arrow-listbox-down-hover-purple.svg"
         alt="Arrow down"
       />
     </div>
 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
+    <!-- Overlay and menu container -->
+    @if(isOverlayVisible) {
+    <div class="overlay" (click)="toggleOverlay()">
+      <div class="menu-container" (click)="$event.stopPropagation()">
+        <p (click)="goToProfile()">Profil</p>
+        <p (click)="logout()">Log out</p>
+      </div>
+    </div>
+    }
   </div>
 </section>
