@@ -8,4 +8,10 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss',
 })
-export class ContentComponent {}
+export class ContentComponent {
+  isEditing: boolean = false;
+
+  toggleEditState(): void {
+    this.isEditing = !this.isEditing; // Toggle the state between true and false
+  }
+}

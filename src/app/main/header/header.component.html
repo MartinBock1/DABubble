@@ -43,7 +43,7 @@
     <!-- Overlay and menu container -->
     @if(isOverlayVisible) {
     <div class="overlay" (click)="toggleOverlay()">
-      <div class="menu-container" (click)="$event.stopPropagation()">
+      <div class="menu-container" >
         <p (click)="goToProfile()">Profil</p>
         <p (click)="logout()">Log out</p>
       </div>
