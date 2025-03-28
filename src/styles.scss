@@ -96,7 +96,7 @@ a {
 }
 
 .error-message {
-  @include font($fs: 10px, $fw: 400);
+  @include font($fs: 14px, $fw: 400);
   color: $red;
 }
 

@@ -1,1 +1,168 @@
-<p>signup works!</p>
+<section>
+  <header>
+    <img src="assets/img/logo.svg" alt="" />
+  </header>
+  <form class="dialog-container" (ngSubmit)="onSubmit()">
+    <div class="headline">
+      <div class="img-container">
+        <img
+          class="arrow-back"
+          src="assets/img/icons/arrow-back.svg"
+          alt="Arrow Back Icon"
+        />
+        <img
+          class="arrow-back-hover"
+          src="assets/img/icons/arrow-back-hover.svg"
+          alt="Arrow Back Icon"
+        />
+      </div>
+      <h1>Konto erstellen</h1>
+      <div></div>
+    </div>
+    <p class="subtext">
+      Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues
+      DABubble-Konto.
+    </p>
+    <div class="dialog-box">
+      <div class="input-name">
+        <div
+          class="input-container"
+          [ngClass]="{ 'input-focused': focusedInput === 'name' }"
+          (click)="focusInput(nameField)"
+        >
+          <img
+            src="assets/img/icons/person-filled-icon.svg"
+            alt="Person Icon"
+          />
+          <input
+            [(ngModel)]="name"
+            name="name"
+            type="text"
+            placeholder="Name und Nachname"
+            required
+            #nameField
+            (focus)="onFocus('name')"
+            (blur)="onBlur()"
+          />
+        </div>
+        @if(name && !namePattern.test(name)) {
+        <p class="error-message">*</p>
+        }
+      </div>
+
+      <div class="input-email">
+        <div
+          class="input-container"
+          [ngClass]="{ 'input-focused': focusedInput === 'email' }"
+          [ngClass]="{ 'input-invalid': !isEmailValid }"
+          (click)="focusInput(emailField)"
+        >
+          <img src="assets/img/icons/mail-icon.svg" alt="Mail Icon" />
+          <input
+            [(ngModel)]="email"
+            name="email"
+            type="email"
+            placeholder="beispielname@email.com"
+            required
+            #emailField
+            (focus)="onFocus('email')"
+            (blur)="onBlur(); isEmailValid = eMailPattern.test(email)"
+          />
+        </div>
+        @if(email && !isEmailValid) {
+        <p class="error-message">*Diese E-Mail-Adresse ist leider ungültig.</p>
+        }
+      </div>
+
+      <div class="input-password">
+        <div
+          class="input-container"
+          [ngClass]="{ 'input-focused': focusedInput === 'password' }"
+          (click)="focusInput(passwordField)"
+        >
+          <img src="assets/img/icons/lock-icon.svg" alt="Lock Icon" />
+          <input
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            placeholder="Passwort"
+            required
+            #passwordField
+            (focus)="onFocus('password')"
+            (blur)="onBlur(); isPasswordValid = passwordPattern.test(password)"
+          />
+        </div>
+        @if(password && !isPasswordValid) {
+        <p class="error-message">
+          *Das Passwort muss mindestens 6 Zeichen lang sein, einen
+          Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.
+        </p>
+        }
+      </div>
+
+      <div class="privacy">
+        <div class="checkboxes" (click)="toggleCheckbox()">
+          @if(!isChecked) {
+          <img
+            class="checkbox"
+            src="assets/img/icons/checkbox-icon.svg"
+            alt="Checkbox Icon"
+          />
+          <img
+            class="checkbox-hover"
+            src="assets/img/icons/checkbox-icon-hover.svg"
+            alt="Checkbox Icon Hover"
+          />
+          } @if(isChecked) {
+          <img
+            class="checkbox-checked"
+            src="assets/img/icons/checkbox-icon-checked.svg"
+            alt="Checkbox Icon Active"
+          />
+          <img
+            class="checkbox-checked-hover"
+            src="assets/img/icons/checkbox-icon-checked-hover.svg"
+            alt="Checkbox Icon Active Hover"
+          />
+          }
+        </div>
+        <p>
+          Ich stimme der
+          <a [routerLink]="['/policy']">Datenschutzerklärung</a> zu.
+        </p>
+      </div>
+    </div>
+
+    <div class="dialog-button">      
+      <button
+        type="submit"
+        [disabled]="
+          !isChecked ||
+          !name ||
+          !email ||
+          !password ||
+          !isEmailValid ||
+          !isPasswordValid
+        "
+        [ngStyle]="{
+          cursor:
+            !isChecked ||
+            !name ||
+            !email ||
+            !password ||
+            !isEmailValid ||
+            !isPasswordValid
+              ? 'not-allowed'
+              : 'pointer'
+        }"
+      >
+        Weiter
+      </button>
+    </div>
+  </form>
+
+  <footer>
+    <a [routerLink]="['/legal']">Impressum</a>
+    <a [routerLink]="['/policy']">Datenschutz</a>
+  </footer>
+</section>

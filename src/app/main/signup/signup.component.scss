@@ -1,2 +1,191 @@
 @import './../../../styles.scss';
 
+section {
+  height: 100vh;
+  @include dFlex();
+  flex-direction: column;
+}
+
+header {
+  @include dFlex($jc: flex-start);
+  width: 100%;
+  padding: 75px 0px 0px 75px;
+  margin-bottom: 50px;
+}
+
+.dialog-container {
+  @include dFlex($g: 40px);
+  flex-direction: column;
+  background-color: $white;
+  width: 31.56vw;
+  max-width: 606px;
+  min-width: 500px;
+  border-radius: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.headline {
+  @include dFlex($jc: space-between, $g: 16px);
+  width: 100%;
+  padding: 0px 20px 0px 20px;
+
+  >div,
+  .img-container {
+    width: 40px;
+    height: 40px;
+    @include dFlex();
+  }
+
+  .img-container {
+
+    .arrow-back-hover {
+      display: none;
+    }
+
+    &:hover {
+
+      background-color: $ice_blue;
+      border-radius: 50%;
+
+      .arrow-back {
+        display: none;
+      }
+
+      .arrow-back-hover {
+        display: block;
+      }
+    }
+  }
+
+  .arrow-back,
+  .arrow-back-hover {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  >h1 {
+    @include font($fs: 46px, $fw: 700);
+    color: $purple_1;
+    text-align: center;
+  }
+}
+
+.subtext {
+  @include font($fs: 20px, $fw: 400);
+  text-align: center;
+  width: 82.5%;
+  max-width: 486px;
+}
+
+.dialog-box {
+  @include dFlex($g: 40px);
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-name,
+.input-email,
+.input-password {
+  @include dFlex($ai: flex-start);
+  flex-direction: column;
+  width: 82.5%;
+  max-width: 486px;
+}
+
+.input-container {
+  @include dFlex($jc: flex-start, $g: 25px);
+  width: 100%;
+  background-color: $ice_blue;
+  border: 1px solid $ice_blue;
+  height: 60px;
+  border-radius: 100px;
+  padding: 18px 32px;
+
+  &:hover {
+    border: 1px solid $placeholer_gray;
+  }
+
+  &.input-invalid {
+    border: 1px solid $red;
+  }
+
+  &.input-focused {
+    border: 1px solid $purple_3;
+  }
+}
+
+input {
+  all: unset;
+  height: 24px;
+  @include font($fs: 18px, $fw: 500);
+  cursor: text;
+  flex: 1;
+}
+
+.privacy {
+  @include dFlex($jc: flex-start, $g: 16px);
+  width: 82.5%;
+  max-width: 486px;
+}
+
+.checkboxes {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+
+  .checkbox-hover,
+  .checkbox-checked,
+  .checkbox-checked-hover {
+    display: none;
+  }
+
+  &:hover {
+    .checkbox {
+      display: none;
+    }
+
+    .checkbox-hover {
+      display: block;
+    }
+  }
+
+  .checkbox-checked {
+    display: block;
+  }
+
+  &:hover {
+    .checkbox-checked {
+      display: none;
+    }
+
+    .checkbox-checked-hover {
+      display: block;
+    }
+  }
+}
+
+.dialog-button {
+  @include dFlex($jc: flex-end);
+  width: 100%;
+  padding-right: 40px;
+
+  button {
+    @include font($fs: 18px, $fw: 700);
+    border-radius: 25px;
+    background-color: $purple_1;
+    color: $white;
+    width: 107px;
+    height: 49px;
+    cursor: pointer;
+  }
+}
+
+footer {
+  @include dFlex($g: 50px);
+  @include font($fs: 18px, $fw: 400);
+  color: $purple_2;
+  width: 100%;
+  padding: 75px 0px 40px 0px;
+}

@@ -1,12 +1,81 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, FormsModule, CommonModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+  styleUrl: './signup.component.scss',
 })
 export class SignupComponent {
+  /** Injected Services */
+  authService = inject(AuthService);
 
+  /** Authentication & Input States */
+  name: string = '';
+  email: string = '';
+  password: string = '';
+  isChecked = false;
+  focusedInput: string = '';
+  isEmailValid: boolean = true;
+  isPasswordValid: boolean = true;
+
+  /** Password Visibility */
+  passwordFieldActive: boolean = false;
+
+  /** Validation Patterns */
+  namePattern = /[a-zA-ZäüößÄÜÖ\s]{3,}/;
+  eMailPattern = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/;
+  passwordPattern = /(?=.*[A-Z])(?=.*\d)(?=.*[^\w]).{6,20}/;
+
+  toggleCheckbox() {
+    this.isChecked = !this.isChecked;
+  }
+
+  onSubmit() {
+    if (
+      this.namePattern.test(this.name) &&
+      this.eMailPattern.test(this.email) &&
+      this.passwordPattern.test(this.password)
+    ) {
+      this.onSignUp();
+      this.clearInputfields();
+    } else {
+      console.log('Eingaben sind nicht gültig!');
+    }
+  }
+
+  // onSubmit method that is triggered when the user clicks the "Weiter" button
+  onSignUp() {
+    if (this.isChecked && this.name && this.email && this.password) {
+      this.authService.signupUser(this.name, this.email, this.password);
+      this.isEmailValid = !!this.email;
+      this.clearInputfields();
+    } else {
+      console.log('Please fill out all fields and accept the privacy policy');
+    }
+  }
+
+  clearInputfields() {
+    this.name = '';
+    this.email = '';
+    this.password = '';
+  }
+
+  focusInput(inputElement: HTMLInputElement) {
+    inputElement.focus();
+  }
+
+  onFocus(inputName: string) {
+    this.focusedInput = inputName;
+    // this.passwordFieldActive = inputName === 'password';
+  }
+
+  onBlur() {
+    this.focusedInput = '';
+  }
 }
