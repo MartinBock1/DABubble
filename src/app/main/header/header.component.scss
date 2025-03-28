@@ -15,7 +15,7 @@ section {
   @include dFlex($jc: flex-start);
   width: 19.1vw;
   max-width: 366px;
-  min-width: 300px;
+  min-width: 250px;
   margin-right: 25px;
 
   .logo {
@@ -31,7 +31,6 @@ section {
 .search-container {
   @include dFlex($jc: space-between, $ai: center, $g: 25px);
   flex: 1;
-  min-width: 400px;
   height: 70px;
   background-color: $white;
   border-radius: 42px;

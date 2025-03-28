@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dabubble-1a1ac": {
+      "hosting": {
+        "dabubble": [
+          "dabubble-1a1ac"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dabubble-1a1ac"
+  }
+}
