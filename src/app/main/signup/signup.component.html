@@ -4,18 +4,21 @@
   </header>
   <form class="dialog-container" (ngSubmit)="onSubmit()">
     <div class="headline">
-      <div class="img-container">
-        <img
-          class="arrow-back"
-          src="assets/img/icons/arrow-back.svg"
-          alt="Arrow Back Icon"
-        />
-        <img
-          class="arrow-back-hover"
-          src="assets/img/icons/arrow-back-hover.svg"
-          alt="Arrow Back Icon"
-        />
-      </div>
+      <a [routerLink]="['/login']">
+        <div class="img-container">
+          <img
+            class="arrow-back"
+            src="assets/img/icons/arrow-back.svg"
+            alt="Arrow Back Icon"
+          />
+          <img
+            class="arrow-back-hover"
+            src="assets/img/icons/arrow-back-hover.svg"
+            alt="Arrow Back Icon"
+          />
+        </div>
+      </a>
+
       <h1>Konto erstellen</h1>
       <div></div>
     </div>
@@ -133,31 +136,31 @@
       </div>
     </div>
 
-    <div class="dialog-button">      
-      <button
-        type="submit"
-        [disabled]="
-          !isChecked ||
-          !name ||
-          !email ||
-          !password ||
-          !isEmailValid ||
-          !isPasswordValid
-        "
-        [ngStyle]="{
-          cursor:
+    <div class="dialog-button">
+        <button
+          type="submit"
+          [disabled]="
             !isChecked ||
             !name ||
             !email ||
             !password ||
             !isEmailValid ||
             !isPasswordValid
-              ? 'not-allowed'
-              : 'pointer'
-        }"
-      >
-        Weiter
-      </button>
+          "
+          [ngStyle]="{
+            cursor:
+              !isChecked ||
+              !name ||
+              !email ||
+              !password ||
+              !isEmailValid ||
+              !isPasswordValid
+                ? 'not-allowed'
+                : 'pointer'
+          }"
+        >
+          Weiter
+        </button>
     </div>
   </form>
 

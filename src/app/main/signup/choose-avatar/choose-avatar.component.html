@@ -1,0 +1,87 @@
+<section>
+  <header>
+    <img src="assets/img/logo.svg" alt="Logo" />
+  </header>
+  <div class="dialog-container">
+    <div class="headline">
+      <a [routerLink]="['/signup']">
+        <div class="img-container">
+          <img
+            class="arrow-back"
+            src="assets/img/icons/arrow-back.svg"
+            alt="Arrow Back Icon"
+          />
+          <img
+            class="arrow-back-hover"
+            src="assets/img/icons/arrow-back-hover.svg"
+            alt="Arrow Back Icon"
+          />
+        </div>
+      </a>
+
+      <h1>Wähle deinen Avatar</h1>
+      <div></div>
+    </div>
+    <img class="avatar" [src]="selectedAvatar()" alt="Selected Avatar" />
+    <div class="user-box">
+      @if(authService.name) {
+      <h2>
+        {{ authService.name }}
+      </h2>
+      }
+      <p>Aus der Liste wählen</p>
+    </div>
+
+    <div class="avatar-list">
+      <img
+        src="assets/img/char-icons/elise-roth.svg"
+        alt="Char Icon"
+        (click)="selectAvatar('assets/img/char-icons/elise-roth.svg')"
+      />
+      <img
+        src="assets/img/char-icons/elias-neumann.svg"
+        alt="Char Icon"
+        (click)="selectAvatar('assets/img/char-icons/elias-neumann.svg')"
+      />
+      <img
+        src="assets/img/char-icons/frederik-beck.svg"
+        alt="Char Icon"
+        (click)="selectAvatar('assets/img/char-icons/frederik-beck.svg')"
+      />
+      <img
+        src="assets/img/char-icons/noah-braun.svg"
+        alt="Char Icon"
+        (click)="selectAvatar('assets/img/char-icons/noah-braun.svg')"
+      />
+      <img
+        src="assets/img/char-icons/sofia-müller.svg"
+        alt="Char Icon"
+        (click)="selectAvatar('assets/img/char-icons/sofia-müller.svg')"
+      />
+      <img
+        src="assets/img/char-icons/steffen-hoffmann.svg"
+        alt="Char Icon"
+        (click)="selectAvatar('assets/img/char-icons/steffen-hoffmann.svg')"
+      />
+    </div>
+
+    @if(showOverlay) {
+    <div class="overlay" [class.show]="showOverlay">
+      <div class="overlay-content">
+        <p>Konto erfolgreich erstellt!</p>
+      </div>
+    </div>
+  }
+
+    <div class="dialog-button">
+      <button (click)="continue()">
+        Weiter
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <a [routerLink]="['/legal']">Impressum</a>
+    <a [routerLink]="['/policy']">Datenschutz</a>
+  </footer>
+</section>

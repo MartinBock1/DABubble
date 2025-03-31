@@ -1,4 +1,4 @@
-@import './../../../styles.scss';
+@import './../../../../styles.scss';
 
 section {
   height: 100vh;
@@ -72,97 +72,39 @@ header {
   }
 }
 
-.subtext {
-  @include font($fs: 20px, $fw: 400);
-  text-align: center;
-  width: 82.5%;
-  max-width: 486px;
+.avatar {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
 }
 
-.dialog-box {
-  @include dFlex($g: 40px);
+.user-box {
+  @include dFlex($g: 10px);
   flex-direction: column;
-  width: 100%;
-}
-
-.input-name,
-.input-email,
-.input-password {
-  @include dFlex($ai: flex-start);
-  flex-direction: column;
+  // width: 100%;
   width: 82.5%;
   max-width: 486px;
-}
 
-.input-container {
-  @include dFlex($jc: flex-start, $g: 25px);
-  width: 100%;
-  background-color: $ice_blue;
-  border: 1px solid $ice_blue;
-  height: 60px;
-  border-radius: 100px;
-  padding: 18px 32px;
-
-  &:hover {
-    border: 1px solid $placeholerGray;
+  >h2 {
+    @include font($fs: 32px, $fw: 700);
   }
 
-  &.input-invalid {
-    border: 1px solid $red;
-  }
-
-  &.input-focused {
-    border: 1px solid $purple_3;
+  >p {
+    @include dFlex($jc: flex-start);
+    @include font($fs: 18px, $fw: 400);
+    width: 100%;
   }
 }
 
-input {
-  all: unset;
-  height: 24px;
-  @include font($fs: 18px, $fw: 500);
-  cursor: text;
-  flex: 1;
-}
 
-.privacy {
-  @include dFlex($jc: flex-start, $g: 16px);
-  width: 82.5%;
-  max-width: 486px;
-}
+.avatar-list {
+  @include dFlex($g: 10px);
 
-.checkboxes {
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-
-  .checkbox-hover,
-  .checkbox-checked,
-  .checkbox-checked-hover {
-    display: none;
-  }
-
-  &:hover {
-    .checkbox {
-      display: none;
-    }
-
-    .checkbox-hover {
-      display: block;
-    }
-  }
-
-  .checkbox-checked {
-    display: block;
-  }
-
-  &:hover {
-    .checkbox-checked {
-      display: none;
-    }
-
-    .checkbox-checked-hover {
-      display: block;
-    }
+  >img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    cursor: pointer;
   }
 }
 
@@ -182,9 +124,46 @@ input {
     cursor: pointer;
 
     &:hover {
-        background-color: $purple_2;
-      }
+      background-color: $purple_2;
+    }
   }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0); 
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  background: $purple_1;
+  color: $white;
+  padding: 50px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  @include font($fs: 36px, $fw: 700);
+  animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  pointer-events: none; 
+
+  &.show {
+    animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    opacity: 1;
+    pointer-events: all; 
+  }
+}
+
+.overlay-content {
+  text-align: center;
 }
 
 footer {

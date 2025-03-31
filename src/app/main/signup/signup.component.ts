@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class SignupComponent {
   /** Injected Services */
   authService = inject(AuthService);
+  router = inject(Router);
 
   /** Authentication & Input States */
   name: string = '';
@@ -44,17 +45,16 @@ export class SignupComponent {
     ) {
       this.onSignUp();
       this.clearInputfields();
+      this.router.navigate(['/choose-avatar']); 
     } else {
-      console.log('Eingaben sind nicht gültig!');
+      console.log('Inputs are invalid!');
     }
   }
-
-  // onSubmit method that is triggered when the user clicks the "Weiter" button
+  
   onSignUp() {
     if (this.isChecked && this.name && this.email && this.password) {
       this.authService.signupUser(this.name, this.email, this.password);
       this.isEmailValid = !!this.email;
-      this.clearInputfields();
     } else {
       console.log('Please fill out all fields and accept the privacy policy');
     }
@@ -72,7 +72,6 @@ export class SignupComponent {
 
   onFocus(inputName: string) {
     this.focusedInput = inputName;
-    // this.passwordFieldActive = inputName === 'password';
   }
 
   onBlur() {
