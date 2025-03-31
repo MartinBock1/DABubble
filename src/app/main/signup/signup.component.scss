@@ -11,6 +11,11 @@ header {
   width: 100%;
   padding: 75px 0px 0px 75px;
   margin-bottom: 50px;
+
+  >img {
+    width: 273px;
+    height: 70px;
+  }
 }
 
 .dialog-container {
@@ -182,8 +187,8 @@ input {
     cursor: pointer;
 
     &:hover {
-        background-color: $purple_2;
-      }
+      background-color: $purple_2;
+    }
   }
 }
 
@@ -193,4 +198,89 @@ footer {
   color: $purple_2;
   width: 100%;
   padding: 75px 0px 40px 0px;
+}
+
+/*--------------------------------------------------   Mobile   --------------------------------------------------*/
+@media(max-width: 600px) {
+
+  header {
+      @include dFlex();
+      padding: 75px 0px 0px 0px;
+  
+      >img {
+        width: 204px;
+        height: 56px;
+      }
+    }
+    
+    .dialog-container {
+      @include dFlex($g: 40px);
+      flex-direction: column;
+      background-color: $white;
+      width: 92.55vw;
+      max-width: 398px;
+      min-width: 300px;
+      border-radius: 30px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+  .headline {
+    @include dFlex($jc: space-between, $g: 15px);
+    width: 92.55vw;
+    max-width: 398px;
+    min-width: 300px;
+    padding: 0px 20px 0px 20px;
+
+    >div,
+    .img-container {
+      width: 40px;
+      height: 40px;
+      @include dFlex();
+    }
+
+    >h1 {
+      @include font($fs: 32px, $fw: 700);
+      color: $purple_1;
+      text-align: center;
+    }
+  }
+
+  .subtext {
+    @include font($fs: 17px, $fw: 400);
+    text-align: center;
+    width: 92.55vw;
+    max-width: 398px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  .input-name,
+  .input-email,
+  .input-password {
+    width: 89.94vw;
+    max-width: 358px;
+    min-width: 270px;
+  }
+
+    .input-container {     
+      height: 50px;
+      border-radius: 100px;
+      padding: 13px 32px;
+    }
+
+}
+
+@media(max-width:400px) {
+  .subtext {
+      @include font($fs: 16px, $fw: 400);
+  }
+  
+  input {
+    height: 22px;
+    @include font($fs: 16px, $fw: 500);
+    cursor: text;
+    flex: 1;
+  }
 }

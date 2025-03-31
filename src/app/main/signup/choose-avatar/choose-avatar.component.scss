@@ -81,7 +81,6 @@ header {
 .user-box {
   @include dFlex($g: 10px);
   flex-direction: column;
-  // width: 100%;
   width: 82.5%;
   max-width: 486px;
 
@@ -131,12 +130,12 @@ header {
 
 @keyframes slide-left {
   0% {
-    transform: translateX(100%); 
+    transform: translateX(100%);
     opacity: 0;
   }
 
   100% {
-    transform: translateX(0); 
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -153,12 +152,12 @@ header {
   border-bottom-left-radius: 30px;
   @include font($fs: 36px, $fw: 700);
   animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  pointer-events: none; 
+  pointer-events: none;
 
   &.show {
     animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     opacity: 1;
-    pointer-events: all; 
+    pointer-events: all;
   }
 }
 
@@ -172,4 +171,104 @@ footer {
   color: $purple_2;
   width: 100%;
   padding: 75px 0px 40px 0px;
+}
+
+/*--------------------------------------------------   Mobile   --------------------------------------------------*/
+@media(max-width: 600px) {
+  header {
+    @include dFlex();
+    padding: 75px 0px 0px 0px;
+
+    >img {
+      width: 204px;
+      height: 56px;
+    }
+  }
+
+  .dialog-container {
+    @include dFlex($g: 24px);
+    // flex-direction: column;
+    // background-color: $white;
+    width: 92.55vw;
+    max-width: 398px;
+    min-width: 300px;
+    border-radius: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .headline {
+    @include dFlex($jc: space-between, $g: 15px);
+    width: 89.45vw;
+    max-width: 356px;
+    min-width: 300px;
+    padding: 0px 0px 0px 0px;
+
+    >div,
+    .img-container {
+      width: 40px;
+      height: 40px;
+      @include dFlex();
+    }
+
+    >h1 {
+      @include font($fs: 32px, $fw: 700);
+      color: $purple_1;
+      text-align: center;
+    }
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  .user-box {
+    @include dFlex($g: 10px);
+    flex-direction: column;
+    width: 89.45vw;
+    max-width: 356px;
+    min-width: 300px;
+
+    >h2 {
+      @include font($fs: 32px, $fw: 700);
+    }
+
+    >p {
+      // @include dFlex($jc: flex-start);
+      @include font($fs: 20px, $fw: 400);
+      // width: 100%;
+    }
+  }
+
+  .avatar-list {
+    @include dFlex($g: 10px);
+    flex-wrap: wrap;
+    width: 89.45vw;
+    max-width: 356px;
+    min-width: 300px;
+    min-height: 56px;
+
+    >img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+    .overlay {
+      position: fixed;
+      bottom: 40px;
+      right: 10px;
+      padding: 20px;
+      @include font($fs: 22px, $fw: 700);
+    }
+}
+
+@media(max-width: 400px) {
+  .avatar-list {
+    @include dFlex($g: 20px);
+  }
 }
