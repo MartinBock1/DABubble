@@ -187,8 +187,6 @@ footer {
 
   .dialog-container {
     @include dFlex($g: 24px);
-    // flex-direction: column;
-    // background-color: $white;
     width: 92.55vw;
     max-width: 398px;
     min-width: 300px;
@@ -229,16 +227,13 @@ footer {
     flex-direction: column;
     width: 89.45vw;
     max-width: 356px;
-    min-width: 300px;
 
     >h2 {
       @include font($fs: 32px, $fw: 700);
     }
 
     >p {
-      // @include dFlex($jc: flex-start);
       @include font($fs: 20px, $fw: 400);
-      // width: 100%;
     }
   }
 
