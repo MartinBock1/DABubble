@@ -1,0 +1,20 @@
+<section>
+  <div class="container" [ngClass]="{ 'fade-out': faded }">
+    <div class="logo-container">
+      <div class="img-container">
+        <div class="slide-left">
+          <img src="assets/img/logo-mini.svg" class="logo" />
+        </div>
+      </div>
+      <div class="slide-right" [ngClass]="{ visible: faded }">
+        <p>DABubble</p>
+      </div>
+    </div>
+  </div>
+
+  @if(faded) {
+  <div class="login-content">
+    <!-- Hier kann das eigentliche Login-Formular stehen -->
+  </div>
+  }
+</section>

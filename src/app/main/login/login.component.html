@@ -1,1 +1,30 @@
-<p>login works!</p>
+<section class="content_max" [ngClass]="{ 'page-loaded': isPageLoaded }">
+  <!-------------------------------------------------- Start Animation -------------------------------------------------->
+  <div class="container-left" [ngClass]="{ 'fade-out': faded }">
+    <div class="logo-container slide-left">
+      <img class="logo-mini" src="assets/img/logo-mini.svg" />
+    </div>
+  </div>
+  <div class="container-right" [ngClass]="{ 'fade-out': faded }">
+    <div class="text-container slide-right">
+      <p class="text">DABubble</p>
+    </div>
+  </div>
+  <!-------------------------------------------------- Start Animation -------------------------------------------------->
+  <div class="container">
+    @if(isLogoVisible) {
+    
+    <img
+      class="animated-logo"
+      [ngClass]="{ 'slide-tl': isLogoVisible }"
+      [ngClass]="{ 'logo-final-position': isLogoShifted }"
+      src="assets/img/logo.svg"
+      alt="Logo"
+    />
+    
+    <div class="login-content">
+      <!-- Hier kann das eigentliche Login-Formular stehen -->
+    </div>
+    }
+  </div>
+</section>
