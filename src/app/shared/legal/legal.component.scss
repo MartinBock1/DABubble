@@ -1,7 +1,7 @@
 @import './../../../styles.scss';
 
 section {
-  @include dFlex($jc: flex-start);
+  @include dFlex($jc: space-between);
   flex-direction: column;
   height: 100vh;
 }
@@ -24,64 +24,101 @@ header {
   background-color: $white;
   width: 35.21vw;
   max-width: 676px;
-  min-width: 300px;
+  min-width: 500px;
   padding: 48px 56px;
   border-radius: 30px;
-}
 
-.headline {
-  @include dFlex($jc: flex-start);
-  width: 100%;
-  // padding: 0px 20px 0px 20px;
-
-  >div,
-  .img-container {
-    width: 40px;
-    height: 40px;
-    @include dFlex();
-  }
-
-  .img-container {
-
-    .arrow-back-hover {
-      display: none;
+  .headline {
+    @include dFlex($jc: flex-start);
+    width: 100%;
+    // padding: 0px 20px 0px 20px;
+  
+    >div,
+    .img-container {
+      width: 40px;
+      height: 40px;
+      @include dFlex();
     }
-
-    &:hover {
-
-      background-color: $ice_blue;
-      border-radius: 50%;
-
-      .arrow-back {
+  
+    .img-container {
+  
+      .arrow-back-hover {
         display: none;
       }
-
-      .arrow-back-hover {
-        display: block;
+  
+      &:hover {
+  
+        background-color: $ice_blue;
+        border-radius: 50%;
+  
+        .arrow-back {
+          display: none;
+        }
+  
+        .arrow-back-hover {
+          display: block;
+        }
       }
+    }
+  
+    .arrow-back,
+    .arrow-back-hover {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+  
+  h1 {
+    @include font($fs: 46px, $fw: 700);
+    color: $purple_1;
+    margin-bottom: 16px;
+  }
+  
+  h2 {
+    @include font($fs: 32px, $fw: 700);
+    color: $purple_1;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    @include font($fs: 20px, $fw: 400);
+  }
+}
+
+footer {
+  width: 100%;
+  padding: 75px;
+  margin-top: 50px;
+}
+
+/*--------------------------------------------------   Mobile   --------------------------------------------------*/
+@media(max-width: 600px) {
+  header {
+    @include dFlex();
+    padding: 75px 0px 0px 0px;
+
+    .logo {
+      width: 204px;
+      height: 56px;
     }
   }
 
-  .arrow-back,
-  .arrow-back-hover {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
+  .legalnotices {
+    width: 80.00vw;
+    min-width: 300px;
+
+    h1 {
+      @include font($fs: 32px, $fw: 700);
+    }
+  
+    h2 {
+      @include font($fs: 24px, $fw: 700);
+    }
+  
+    p {
+      @include font($fs: 18px, $fw: 400);
+    }
   }
-}
 
-h1 {
-  @include font($fs: 46px, $fw: 700);
-  color: $purple_1;
-  margin-bottom: 16px;
-}
-
-h2 {
-  @include font($fs: 32px, $fw: 700);
-  color: $purple_1;
-  margin-bottom: 16px;
-}
-
-p {
-  @include font($fs: 20px, $fw: 400);
 }

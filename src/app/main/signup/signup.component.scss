@@ -2,7 +2,7 @@
 
 section {
   height: 100vh;
-  @include dFlex($jc: flex-start);
+  @include dFlex($jc: space-between);
   flex-direction: column;
 }
 
@@ -197,7 +197,7 @@ footer {
   @include font($fs: 18px, $fw: 400);
   color: $purple_2;
   width: 100%;
-  padding: 75px 0px 40px 0px;
+  padding: 75px 0px 45px 0px;
 }
 
 /*--------------------------------------------------   Mobile   --------------------------------------------------*/
@@ -207,7 +207,7 @@ footer {
       @include dFlex();
       padding: 75px 0px 0px 0px;
   
-      >img {
+      .logo {
         width: 204px;
         height: 56px;
       }

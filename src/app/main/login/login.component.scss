@@ -3,7 +3,7 @@
 section {
   height: 100vh;
   position: relative;
-  @include dFlex();
+  @include dFlex($jc: space-between);
 
   &.animation-played {
     opacity: 1;
@@ -105,7 +105,7 @@ section {
 
 /*--------------------------------------------------   Aimated Logo   --------------------------------------------------*/
 .container {
-  @include dFlex($jc: flex-start);
+  @include dFlex($jc: space-between);
   flex-direction: column;
   position: absolute;
   width: 100%;
@@ -143,11 +143,6 @@ header {
   }
 }
 
-// header {
-//   @include dFlex($jc: space-between);
-//   width: 100%;
-// }
-
 .signup {
   @include dFlex();
   flex-direction: column;
@@ -184,8 +179,12 @@ header {
       }
     }
   }
+}
 
-
+footer {
+  width: 100%;
+  padding: 75px;
+  margin-top: 50px;
 }
 
 /*--------------------------------------------------   Login   --------------------------------------------------*/
@@ -301,3 +300,6 @@ footer {
   width: 100%;
   padding: 75px 0px 40px 0px;
 }
+
+/*--------------------------------------------------   Mobile   --------------------------------------------------*/
+@media(max-width: 600px) {}
