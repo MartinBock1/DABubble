@@ -1,4 +1,82 @@
 @import './../../../styles.scss';
 
+section {
+  @include dFlex($jc: flex-start);
+  flex-direction: column;
+  height: 100vh;
+}
 
+header {
+  @include dFlex($jc: flex-start);
+  width: 100%;
+  padding: 75px 0px 0px 75px;
+  margin-bottom: 50px;
+
+  .logo {
+    width: 242px;
+    height: 70px;
+  }
+}
+
+.privacy {
+  @include dFlex($ai: flex-start, $g: 32px);
+  flex-direction: column;
+  background-color: $white;
+  width: 35.21vw;
+  max-width: 676px;
+  min-width: 300px;
+  padding: 48px 56px;
+  border-radius: 30px;
+}
+
+.headline {
+  @include dFlex($jc: flex-start);
+  width: 100%;
+  // padding: 0px 20px 0px 20px;
+
+  >div,
+  .img-container {
+    width: 40px;
+    height: 40px;
+    @include dFlex();
+  }
+
+  .img-container {
+
+    .arrow-back-hover {
+      display: none;
+    }
+
+    &:hover {
+
+      background-color: $ice_blue;
+      border-radius: 50%;
+
+      .arrow-back {
+        display: none;
+      }
+
+      .arrow-back-hover {
+        display: block;
+      }
+    }
+  }
+
+  .arrow-back,
+  .arrow-back-hover {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+}
+
+h1 {
+  @include font($fs: 46px, $fw: 700);
+  color: $purple_1;
+  margin-bottom: 16px;
+}
+
+p {
+  @include font($fs: 20px, $fw: 400);
+}
 

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-policy',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './policy.component.html',
-  styleUrl: './policy.component.scss'
+  styleUrl: './policy.component.scss',
 })
-export class PolicyComponent {
-
-}
+export class PolicyComponent {}

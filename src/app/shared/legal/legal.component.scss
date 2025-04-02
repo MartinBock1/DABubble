@@ -12,7 +12,7 @@ header {
   padding: 75px 0px 0px 75px;
   margin-bottom: 50px;
 
-  >img {
+  .logo {
     width: 242px;
     height: 70px;
   }
@@ -68,17 +68,7 @@ header {
     height: 24px;
     cursor: pointer;
   }
-
-  >h1 {
-    @include font($fs: 46px, $fw: 700);
-    color: $purple_1;
-    text-align: center;
-  }
 }
-
-// div {
-//   margin-top: 35px;
-// }
 
 h1 {
   @include font($fs: 46px, $fw: 700);
