@@ -2,7 +2,7 @@
 
 section {
   height: 100vh;
-  @include dFlex();
+  @include dFlex($jc: flex-start);
   flex-direction: column;
 }
 

@@ -4,6 +4,10 @@ section {
   height: 100vh;
   position: relative;
   @include dFlex();
+
+  &.animation-played {
+    opacity: 1;
+  }
 }
 
 /*--------------------------------------------------   Container links   --------------------------------------------------*/
@@ -101,7 +105,8 @@ section {
 
 /*--------------------------------------------------   Aimated Logo   --------------------------------------------------*/
 .container {
-  @include dFlex();
+  @include dFlex($jc: flex-start);
+  flex-direction: column;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -110,6 +115,14 @@ section {
   .container-left {
     display: none;
   }
+}
+
+header {
+  @include dFlex();
+  width: 100%;
+  height: 145px;
+  padding: 75px 0px 0px 75px;
+  margin-bottom: 50px;
 }
 
 .animated-logo {
@@ -124,14 +137,167 @@ section {
   &.logo-final-position {
     width: 242px;
     height: 70px;
-    top: 50px;
-    left: 50px;
+    top: 75px;
+    left: 75px;
     transform: translate(0%, 0%) scale(1);
   }
 }
 
+// header {
+//   @include dFlex($jc: space-between);
+//   width: 100%;
+// }
+
+.signup {
+  @include dFlex();
+  flex-direction: column;
+  position: absolute;
+  top: 75px;
+  right: 75px;
+
+  >p,
+  a {
+    @include font($fs: 18px, $fw: 400);
+  }
+
+  .link {
+    @include dFlex();
+    width: 153px;
+    height: 42px;
+
+    &:hover {
+      border: 1px solid;
+      border-radius: 25px;
+      width: 100%;
+      color: $lightPurple;
+    }
+
+    >a {
+      @include dFlex();
+      @include font($fs: 18px, $fw: 400);
+      color: $purple_2;
+      width: 100%;
+
+      &:hover {
+        color: $purple_1;
+        text-decoration: none;
+      }
+    }
+  }
+
+
+}
+
 /*--------------------------------------------------   Login   --------------------------------------------------*/
 
-.login-content {
-  /* Hier das Styling für den Standard-Login-Bereich */
+.dialog-container {
+  @include dFlex($g: 40px);
+  flex-direction: column;
+  background-color: $white;
+  width: 31.56vw;
+  max-width: 606px;
+  min-width: 500px;
+  border-radius: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.headline {
+  @include dFlex();
+  width: 100%;
+  padding: 0px 20px 0px 20px;
+
+  >h1 {
+    @include font($fs: 46px, $fw: 700);
+    color: $purple_1;
+    text-align: center;
+  }
+}
+
+.subtext {
+  @include font($fs: 20px, $fw: 400);
+  text-align: center;
+  width: 82.5%;
+  max-width: 486px;
+}
+
+.dialog-box {
+  @include dFlex($g: 40px);
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-email,
+.input-password {
+  @include dFlex($ai: flex-start);
+  flex-direction: column;
+  width: 82.5%;
+  max-width: 486px;
+}
+
+.input-container {
+  @include dFlex($jc: flex-start, $g: 25px);
+  width: 100%;
+  background-color: $ice_blue;
+  border: 1px solid $ice_blue;
+  height: 60px;
+  border-radius: 100px;
+  padding: 18px 32px;
+
+  &:hover {
+    border: 1px solid $placeholerGray;
+  }
+
+  &.input-invalid {
+    border: 1px solid $red;
+  }
+
+  &.input-focused {
+    border: 1px solid $purple_3;
+  }
+}
+
+input {
+  all: unset;
+  height: 24px;
+  @include font($fs: 18px, $fw: 500);
+  cursor: text;
+  flex: 1;
+}
+
+input:focus {
+  outline: none;
+}
+
+.dialog-button {
+  @include dFlex($jc: flex-end);
+  width: 100%;
+  padding-right: 40px;
+
+  button {
+    @include font($fs: 18px, $fw: 700);
+    border-radius: 25px;
+    border: unset;
+    background-color: $purple_1;
+    color: $white;
+    width: 107px;
+    height: 49px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $purple_2;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+
+footer {
+  @include dFlex($g: 50px);
+  @include font($fs: 18px, $fw: 400);
+  color: $purple_2;
+  width: 100%;
+  padding: 75px 0px 40px 0px;
 }
