@@ -1,0 +1,38 @@
+<section class="start-animation" [ngClass]="{ hidden: animationFinished }">
+  <div class="start-container" [ngClass]="{ 'fade-out': faded }">
+    <!-- <div class="container-left" [ngClass]="{ 'fade-out': faded }">
+      <div class="logo-container slide-left">
+        <img class="logo-mini" src="assets/img/logo-mini.svg" />
+      </div>
+    </div> -->
+    <!-- <div class="container-right" [ngClass]="{ 'fade-out': faded }">
+      <div class="text-container slide-right">
+        <p class="text">DABubble</p>
+      </div>
+    </div> -->
+
+    <div class="logo-mini-container" [ngClass]="{ 'slide-left': !isMobile, 'slide-left-mobile': isMobile }">
+      <img class="logo-mini" src="assets/img/logo-mini.svg" />
+    </div>
+
+    <!-- <div class="text-container slide-right">
+      <p class="text">DABubble</p>
+    </div> -->
+
+    <div>
+      <img class="logo" src="./../../../../assets/img/logo.svg" alt="">
+    </div>
+  </div>
+
+  @if(isLogoVisible) {
+  <img
+    class="animated-logo"
+    [ngClass]="{
+      'slide-tl': isLogoVisible,
+      'logo-final-position': isLogoShifted
+    }"
+    src="assets/img/logo.svg"
+    alt="Logo"
+  />
+  }
+</section>

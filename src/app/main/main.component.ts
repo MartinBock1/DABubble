@@ -3,11 +3,18 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContentComponent } from './content/content.component';
 import { ChooseAvatarComponent } from './signup/choose-avatar/choose-avatar.component';
+import { AnimationComponent } from './login/animation/animation.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [LoginComponent, SignupComponent, ContentComponent, ChooseAvatarComponent],
+  imports: [
+    LoginComponent,
+    SignupComponent,
+    ContentComponent,
+    ChooseAvatarComponent,
+    AnimationComponent,
+  ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })

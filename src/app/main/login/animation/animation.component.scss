@@ -1,0 +1,273 @@
+@import './../../../../styles.scss';
+
+/*--------------------------------------------------   Start Animation   --------------------------------------------------*/
+.start-animation {
+  position: relative;
+  @include dFlex($jc: space-between);
+  width: 100%;
+  height: 100vh;
+  // background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+  background-color: transparent;
+  // transition: opacity 0.5s ease-in-out;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.start-container {
+  width: 100%;
+  height: 100%;
+  @include dFlex();
+  background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+}
+
+/*--------------------------------------------------   Container links   --------------------------------------------------*/
+// .container-left {
+//   @include dFlex($jc: flex-end);
+//   position: relative;
+//   width: 50%;
+//   height: 100%;
+//   background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+//   // transition: opacity 0.5s ease-in-out;
+//   z-index: 10;
+// }
+
+// .fade-out {
+//   opacity: 0;
+//   pointer-events: none;
+// }
+
+// .logo-container {
+//   @include dFlex();
+//   position: absolute;
+//   right: -100px;
+//   width: 200px;
+//   height: 200px;
+// }
+
+// .logo-mini {
+//   width: 187px;
+//   height: 184px;
+// }
+
+// /**
+//  * ----------------------------------------
+//  * animation slide-left
+//  * ----------------------------------------
+//  */
+// @keyframes slide-left {
+//   0% {
+//     transform: translateX(0);
+//   }
+
+//   100% {
+//     transform: translateX(-110px);
+//   }
+// }
+
+// .slide-left {
+//   animation: slide-left 0.3s ease-in both;
+//   animation-delay: 1.5s;
+// }
+
+/*--------------------------------------------------   Container rechts   --------------------------------------------------*/
+// .container-right {
+//   @include dFlex($jc: flex-start);
+//   position: relative;
+//   width: 50%;
+//   height: 100%;
+//   // background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+//   // transition: opacity 0.5s ease-in-out;
+// }
+
+// .text-container {
+//   @include dFlex();
+//   height: 200px;
+//   width: 435px;
+//   position: absolute;
+//   left: -440px;
+//   z-index: 5;
+// }
+
+// .text {
+//   @include dFlex();
+//   @include font($fs: 90px, $fw: 700);
+//   color: $white;
+// }
+
+// /**
+//  * ----------------------------------------
+//  * animation slide-right
+//  * ----------------------------------------
+//  */
+// @keyframes slide-right {
+//   0% {
+//     transform: translateX(0);
+//   }
+
+//   100% {
+//     transform: translateX(450px);
+//   }
+// }
+
+// .slide-right {
+//   animation: slide-right 0.3s ease-in both;
+//   animation-delay: 2.5s;
+// }
+
+
+.logo-mini-container {
+  @include dFlex($jc: flex-end);
+  background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+  width: 550px;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 275px);
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateX(-130px);
+  }
+}
+
+.slide-left {
+  animation: slide-left 0.5s linear 1.5s forwards;
+}
+
+.logo-mini {
+  width: 187px;
+  height: 184px;
+}
+
+.text-container {
+  @include dFlex();
+  height: 100vh;
+  width: 435px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 340px);
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  @include dFlex();
+  @include font($fs: 85px, $fw: 700);
+  color: $white;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateX(445px);
+  }
+}
+
+.slide-right {
+  animation: slide-right 0.3s ease-in both;
+  animation-delay: 2.5s;
+}
+
+.animated-logo {
+  position: absolute;
+  height: 184px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 0.5s ease-in-out;
+  z-index: 100;
+
+  &.logo-final-position {
+    width: 242px;
+    height: 70px;
+    top: 75px;
+    left: 75px;
+    transform: translate(0%, 0%) scale(1);
+  }
+}
+
+
+/*--------------------------------------------------   Mobile   --------------------------------------------------*/
+@media(max-width: 600px) {
+  .start-animation {
+    @include dFlex();
+    flex-direction: column;
+  }
+
+  /*--------------------------------------------------   Logo Mini   --------------------------------------------------*/
+  .logo-mini-container {
+    @include dFlex($jc: flex-end);
+    background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+    width: 100px;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 35px);
+    transform: translate(-50%, -50%);
+    z-index: 5;
+
+    border: 1px solid;
+  }
+
+    .logo-mini {
+      width: 69px;
+      height: 69px;
+    }
+
+  /* Stelle sicher, dass die keyframes für kleine Bildschirme hier überschrieben werden */
+  @keyframes slide-left-mobile {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) translateX(-40px);
+    }
+  }
+
+  .slide-left-mobile {
+    animation: slide-left 0.5s linear 1.5s forwards;
+  }
+
+  /*--------------------------------------------------   Logo Mini   --------------------------------------------------*/
+
+  .text {
+    @include dFlex();
+    @include font($fs: 48px, $fw: 700);
+    color: $white;
+  }
+
+  .animated-logo {
+    position: absolute;
+    height: 69px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.5s ease-in-out;
+    z-index: 100;
+
+    &.logo-final-position {
+      width: 242px;
+      height: 70px;
+      top: 75px;
+      left: 75px;
+      transform: translate(0%, 0%) scale(1);
+    }
+  }
+}

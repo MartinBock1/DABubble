@@ -3,11 +3,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AnimationComponent } from './animation/animation.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, AnimationComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   // isPageLoaded: boolean = false;
   isLogoShifted: boolean = false;
   isLogoVisible: boolean = false;
+  animationFinished: boolean = false; // Steuerung für Sichtbarkeit der Login-Seite
 
   /** Check if animation already played */
   isAnimationPlayed: boolean = false;
@@ -48,18 +50,21 @@ export class LoginComponent implements OnInit {
       localStorage.getItem('isAnimationPlayed') === 'true';
 
     if (!this.isAnimationPlayed) {
-      setTimeout(() => {
-        this.faded = true;
-      }, 3000);
+      // setTimeout(() => {
+      //   this.faded = true;
+      // }, 3000);
 
-      setTimeout(() => {
-        this.isLogoVisible = true;
-      }, 3200);
+      // setTimeout(() => {
+      //   this.isLogoVisible = true;
+      // }, 3100);
 
-      setTimeout(() => {
-        this.isLogoShifted = true;
-        // this.isAnimationPlayed = true;
-      }, 3300);
+      // setTimeout(() => {
+      //   this.isLogoShifted = true;
+      // }, 3300);
+
+      // setTimeout(() => {
+      //   this.animationFinished = true; // Animation ist fertig, Login-Seite anzeigen
+      // }, 4500);
 
       localStorage.setItem('isAnimationPlayed', 'true');
     } else {
@@ -67,6 +72,7 @@ export class LoginComponent implements OnInit {
       this.faded = true;
       this.isLogoVisible = true;
       this.isLogoShifted = true;
+      this.animationFinished = true;
     }
   }
 
@@ -143,3 +149,4 @@ export class LoginComponent implements OnInit {
     this.focusedInput = '';
   }
 }
+
