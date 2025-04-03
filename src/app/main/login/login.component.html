@@ -1,34 +1,29 @@
-<section class="content_max">
+<section class="content-max">
   <!-------------------------------------------------- Start Animation -------------------------------------------------->
-  <div class="container-left" [ngClass]="{ 'fade-out': faded }">
-    <div class="logo-container slide-left">
-      <img class="logo-mini" src="assets/img/logo-mini.svg" />
+  <div class="start-container">
+    <div class="container-left" [ngClass]="{ 'fade-out': faded }">
+      <div class="logo-container slide-left">
+        <img class="logo-mini" src="assets/img/logo-mini.svg" />
+      </div>
     </div>
-  </div>
-  <div class="container-right" [ngClass]="{ 'fade-out': faded }">
-    <div class="text-container slide-right">
-      <p class="text">DABubble</p>
+    <div class="container-right" [ngClass]="{ 'fade-out': faded }">
+      <div class="text-container slide-right">
+        <p class="text">DABubble</p>
+      </div>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container"> 
     @if(isLogoVisible) {
-      <header>
-        <img
-          class="animated-logo"
-          [ngClass]="{ 'slide-tl': isLogoVisible }"
-          [ngClass]="{ 'logo-final-position': isLogoShifted }"
-          src="assets/img/logo.svg"
-          alt="Logo"
-        />
-        <div class="signup">
-          <p>Neu bei DABubble?</p>
-          <div class="link">
-            <a [routerLink]="[ '/signup' ]">Konto erstellen</a>
-          </div>
-        </div>
-
-      </header>
+    <header>
+      <img
+        class="animated-logo"
+        [ngClass]="{ 'slide-tl': isLogoVisible }"
+        [ngClass]="{ 'logo-final-position': isLogoShifted }"
+        src="assets/img/logo.svg"
+        alt="Logo"
+      />    
+    </header> 
     <!-------------------------------------------------- End Start Animation -------------------------------------------------->
     <form class="dialog-container" (ngSubmit)="onSubmit()">
       <div class="headline">
@@ -98,13 +93,24 @@
 
       <div class="dialog-button">
         <button
+        class="btn-login"
           type="submit"
           [disabled]="!email || !password || emailError || passwordError"
         >
           Anmelden
         </button>
+        <button class="btn-guest-login" type="submit">
+          Gäste-Login
+        </button>
       </div>
     </form>
+
+    <div class="signup">
+      <p>Neu bei DABubble?</p>
+      <div class="link">
+        <a [routerLink]="['/signup']">Konto erstellen</a>
+      </div>
+    </div>
 
     <footer>
       <a [routerLink]="['/legal']">Impressum</a>

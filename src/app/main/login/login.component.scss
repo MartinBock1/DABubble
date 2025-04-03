@@ -10,6 +10,10 @@ section {
   }
 }
 
+.start-container {
+  width: 100%;
+}
+
 /*--------------------------------------------------   Container links   --------------------------------------------------*/
 .container-left {
   @include dFlex($jc: flex-end);
@@ -103,7 +107,7 @@ section {
   animation-delay: 2.5s;
 }
 
-/*--------------------------------------------------   Aimated Logo   --------------------------------------------------*/
+/*--------------------------------------------------   Container final   --------------------------------------------------*/
 .container {
   @include dFlex($jc: space-between);
   flex-direction: column;
@@ -111,10 +115,12 @@ section {
   width: 100%;
   height: 100%;
 
-  &.container-right,
-  .container-left {
+  &.start-container {
     display: none;
   }
+
+  border: 1px solid;
+  background-color: aqua;
 }
 
 header {
@@ -181,12 +187,6 @@ header {
   }
 }
 
-footer {
-  width: 100%;
-  padding: 75px;
-  margin-top: 50px;
-}
-
 /*--------------------------------------------------   Login   --------------------------------------------------*/
 
 .dialog-container {
@@ -214,10 +214,13 @@ footer {
 }
 
 .subtext {
-  @include font($fs: 20px, $fw: 400);
   text-align: center;
   width: 82.5%;
   max-width: 486px;
+
+  >p {
+    @include font($fs: 20px, $fw: 400);
+  }
 }
 
 .dialog-box {
@@ -269,19 +272,22 @@ input:focus {
 }
 
 .dialog-button {
-  @include dFlex($jc: flex-end);
+  @include dFlex($g: 30px);
   width: 100%;
-  padding-right: 40px;
 
-  button {
+  .btn-login,
+  .btn-guest-login {
     @include font($fs: 18px, $fw: 700);
     border-radius: 25px;
     border: unset;
-    background-color: $purple_1;
-    color: $white;
-    width: 107px;
+    width: 137px;
     height: 49px;
     cursor: pointer;
+  }
+
+  .btn-login {
+    background-color: $purple_1;
+    color: $white;
 
     &:hover {
       background-color: $purple_2;
@@ -291,15 +297,122 @@ input:focus {
       cursor: not-allowed;
     }
   }
+
+  .btn-guest-login {
+    background-color: transparent;
+    color: $purple_1;
+    border: 1px solid;
+    border-color: $purple_2;
+
+    &:hover {
+      background-color: $purple_1;
+      color: $white;
+    }
+  }
 }
 
 footer {
   @include dFlex($g: 50px);
   @include font($fs: 18px, $fw: 400);
   color: $purple_2;
-  width: 100%;
   padding: 75px 0px 40px 0px;
+
+  border: 1px solid;
+  background-color: yellow;
 }
 
 /*--------------------------------------------------   Mobile   --------------------------------------------------*/
-@media(max-width: 600px) {}
+@media(max-width: 600px) {
+  header {
+    @include dFlex();
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 50px;
+
+    .animated-logo {
+      @include dFlex();
+      width: 204px;
+      height: 56px;
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  .dialog-container {
+    @include dFlex($g: 20px);
+    width: 92.55vw;
+    max-width: 398px;
+    min-width: 300px;
+    padding: 35px 20px;
+  }
+
+  .headline {
+    width: 89.94vw;
+    max-width: 358px;
+    min-width: 270px;
+
+    >h1 {
+      @include font($fs: 32px, $fw: 700);
+    }
+  }
+
+  .subtext {
+    width: 89.94vw;
+    max-width: 358px;
+    min-width: 270px;
+
+    >p {
+      @include font($fs: 17px, $fw: 400);
+    }
+  }
+
+  .dialog-box {
+    @include dFlex($g: 30px);
+  }
+
+  .input-email,
+  .input-password {
+    width: 89.94vw;
+    max-width: 358px;
+    min-width: 270px;
+  }
+
+  .signup {
+    @include dFlex($g: 20px);
+    position: relative;
+    top: auto;
+    right: auto;
+
+    .link {
+      border: 1px solid;
+      border-radius: 25px;
+      border-color: $purple_2;
+      width: 100%;
+      
+      &:hover {
+        border-color: $purple_2;
+      }
+
+      >a {
+        color: $purple_1;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media(max-width: 400px) {
+
+  .input-container {
+    @include dFlex($jc: flex-start, $g: 20px);
+    padding: 13px 22px;
+  }
+
+  input {
+    @include font($fs: 16px, $fw: 500);
+  }
+}
