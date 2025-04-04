@@ -3,7 +3,6 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContentComponent } from './content/content.component';
 import { ChooseAvatarComponent } from './signup/choose-avatar/choose-avatar.component';
-import { AnimationComponent } from './login/animation/animation.component';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +12,6 @@ import { AnimationComponent } from './login/animation/animation.component';
     SignupComponent,
     ContentComponent,
     ChooseAvatarComponent,
-    AnimationComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
