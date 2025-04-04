@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { AnimationComponent } from './animation/animation.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, AnimationComponent],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -17,12 +16,13 @@ export class LoginComponent implements OnInit {
   authService = inject(AuthService);
   router = inject(Router);
 
+  isMobile: boolean = false;
   faded: boolean = false;
   /** UI States */
   // isPageLoaded: boolean = false;
   isLogoShifted: boolean = false;
   isLogoVisible: boolean = false;
-  animationFinished: boolean = false; // Steuerung für Sichtbarkeit der Login-Seite
+  animationFinished: boolean = false; 
 
   /** Check if animation already played */
   isAnimationPlayed: boolean = false;
@@ -43,30 +43,35 @@ export class LoginComponent implements OnInit {
   eMailPattern = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/;
   passwordPattern = /(?=.*[A-Z])(?=.*\d)(?=.*[^\w]).{6,20}/;
 
+  // HostListener, um auf die Bildschirmgröße zu reagieren
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.isMobile = window.innerWidth <= 600;
+  }
+
   constructor() {}
 
   ngOnInit(): void {
-    this.isAnimationPlayed =
-      localStorage.getItem('isAnimationPlayed') === 'true';
+    // this.isAnimationPlayed =
+    //   localStorage.getItem('isAnimationPlayed') === 'true';
 
     if (!this.isAnimationPlayed) {
-      // setTimeout(() => {
-      //   this.faded = true;
-      // }, 3000);
+      this.isMobile = window.innerWidth <= 600; // Initialwert
 
-      // setTimeout(() => {
-      //   this.isLogoVisible = true;
-      // }, 3100);
+      setTimeout(() => {
+        this.faded = true;
+      }, 3000);
+      setTimeout(() => {
+        this.isLogoVisible = true;
+      }, 3100);
+      setTimeout(() => {
+        this.isLogoShifted = true;
+      }, 3300);
+      setTimeout(() => {
+        this.animationFinished = true; // Animation ist fertig, Login-Seite anzeigen
+      }, 4000);
 
-      // setTimeout(() => {
-      //   this.isLogoShifted = true;
-      // }, 3300);
-
-      // setTimeout(() => {
-      //   this.animationFinished = true; // Animation ist fertig, Login-Seite anzeigen
-      // }, 4500);
-
-      localStorage.setItem('isAnimationPlayed', 'true');
+      // localStorage.setItem('isAnimationPlayed', 'true');
     } else {
       // Setze die Seite in den Zustand nach der Animation
       this.faded = true;

@@ -15,13 +15,13 @@
       <img class="logo-mini" src="assets/img/logo-mini.svg" />
     </div>
 
-    <!-- <div class="text-container slide-right">
+    <div class="text-container slide-right" [ngClass]="{ 'slide-right': !isMobile, 'slide-right-mobile': isMobile }">
       <p class="text">DABubble</p>
-    </div> -->
-
-    <div>
-      <img class="logo" src="./../../../../assets/img/logo.svg" alt="">
     </div>
+
+    <!-- <div>
+      <img class="logo" src="./../../../../assets/img/logo.svg" alt="">
+    </div> -->
   </div>
 
   @if(isLogoVisible) {

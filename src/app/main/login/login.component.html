@@ -1,47 +1,66 @@
-<!-- <section class="start-animation" [ngClass]="{ 'hidden': animationFinished }">
-  <div class="start-container">
-    <div class="container-left" [ngClass]="{ 'fade-out': faded }">
-      <div class="logo-container slide-left">
-        <img class="logo-mini" src="assets/img/logo-mini.svg" />
-      </div>
+<!-------------------------------------------------- BOf Start Animation -------------------------------------------------->
+<section class="start-animation" [ngClass]="{ hidden: animationFinished }">
+  <div class="start-container" [ngClass]="{ 'fade-out': faded }">
+    <div class="logo-mini-container" [ngClass]="{ 'slide-left': !isMobile, 'slide-left-mobile': isMobile }">
+      <img class="logo-mini" src="assets/img/logo-mini.svg" />
     </div>
-    <div class="container-right" [ngClass]="{ 'fade-out': faded }">
-      <div class="text-container slide-right">
-        <p class="text">DABubble</p>
-      </div>
+    <div class="text-container slide-right" [ngClass]="{ 'slide-right': !isMobile, 'slide-right-mobile': isMobile }">
+      <p class="text">DABubble</p>
     </div>
   </div>
-  @if(isLogoVisible) {
-    <header>
-      <img
-        class="animated-logo"
-        [ngClass]="{ 'slide-tl': isLogoVisible, 'logo-final-position': isLogoShifted }"
-        src="assets/img/logo.svg"
-        alt="Logo"
-      />    
-    </header> 
-  }
-</section> -->
-<!-- <app-animation></app-animation> -->
 
-<section class="content-max login-section" [ngClass]="{ 'visible': animationFinished }">
-  <div class="container"> 
+  @if(isLogoVisible) {
+  <img
+    class="animated-logo"
+    [ngClass]="{
+      'slide-tl': isLogoVisible,
+      'logo-final-position': isLogoShifted
+    }"
+    src="assets/img/logo.svg"
+    alt="Logo"
+  />
+  }
+</section>
+<!-------------------------------------------------- EOf Start Animation -------------------------------------------------->
+
+<section
+  class="content-max login-section"
+  [ngClass]="{ visible: animationFinished }"
+>
+  <div class="container">
     @if(isLogoVisible) {
     <header>
-    <img class="logo" src="assets/img/logo.svg" alt="" />
-  </header>
+      <img class="logo" src="assets/img/logo.svg" alt="" />
+    </header>
     <form class="dialog-container" (ngSubmit)="onSubmit()">
       <div class="headline">
         <h1>Anmeldung</h1>
       </div>
       <p class="subtext">
-        Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit verwendest.
+        Wir empfehlen dir, die E-Mail-Adresse zu nutzen, die du bei der Arbeit
+        verwendest.
       </p>
       <div class="dialog-box">
         <div class="input-email">
-          <div class="input-container" [ngClass]="{ 'input-focused': focusedInput === 'email', 'input-invalid': emailError }">
+          <div
+            class="input-container"
+            [ngClass]="{
+              'input-focused': focusedInput === 'email',
+              'input-invalid': emailError
+            }"
+          >
             <img src="assets/img/icons/mail-icon.svg" alt="Mail Icon" />
-            <input [(ngModel)]="email" name="email" type="email" placeholder="beispielname@email.com" required #emailField (focus)="onFocus('email')" (blur)="onBlur(); isEmailValid = eMailPattern.test(email)" (input)="onEmailChange()" />
+            <input
+              [(ngModel)]="email"
+              name="email"
+              type="email"
+              placeholder="beispielname@email.com"
+              required
+              #emailField
+              (focus)="onFocus('email')"
+              (blur)="onBlur(); isEmailValid = eMailPattern.test(email)"
+              (input)="onEmailChange()"
+            />
           </div>
           @if(emailError && (email || !isEmailValid)) {
           <p class="error-message">{{ emailError }}</p>
@@ -49,9 +68,27 @@
         </div>
 
         <div class="input-password">
-          <div class="input-container" [ngClass]="{ 'input-focused': focusedInput === 'password', 'input-invalid': passwordError }">
+          <div
+            class="input-container"
+            [ngClass]="{
+              'input-focused': focusedInput === 'password',
+              'input-invalid': passwordError
+            }"
+          >
             <img src="assets/img/icons/lock-icon.svg" alt="Lock Icon" />
-            <input [(ngModel)]="password" name="password" type="password" placeholder="Passwort" required #passwordField (focus)="onFocus('password')" (blur)="onBlur(); isPasswordValid = passwordPattern.test(password)" (input)="onPasswordChange()" />
+            <input
+              [(ngModel)]="password"
+              name="password"
+              type="password"
+              placeholder="Passwort"
+              required
+              #passwordField
+              (focus)="onFocus('password')"
+              (blur)="
+                onBlur(); isPasswordValid = passwordPattern.test(password)
+              "
+              (input)="onPasswordChange()"
+            />
           </div>
           @if(passwordError && (password || !isPasswordValid)) {
           <p class="error-message">{{ passwordError }}</p>
@@ -60,12 +97,14 @@
       </div>
 
       <div class="dialog-button">
-        <button class="btn-login" type="submit" [disabled]="!email || !password || emailError || passwordError">
+        <button
+          class="btn-login"
+          type="submit"
+          [disabled]="!email || !password || emailError || passwordError"
+        >
           Anmelden
         </button>
-        <button class="btn-guest-login" type="submit">
-          Gäste-Login
-        </button>
+        <button class="btn-guest-login" type="submit">Gäste-Login</button>
       </div>
     </form>
 
