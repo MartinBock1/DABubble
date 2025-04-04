@@ -1,4 +1,5 @@
 @import './../../../styles.scss';
+
 /*--------------------------------------------------   Start Animation   --------------------------------------------------*/
 .start-animation {
   position: relative;
@@ -6,6 +7,7 @@
   width: 100%;
   height: 100vh;
   background-color: transparent;
+  transition: opacity 0.5s ease-in-out;
 
   &.hidden {
     display: none;
@@ -17,6 +19,7 @@
   height: 100%;
   @include dFlex();
   background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+  transition: opacity 1s ease-in-out;
 }
 
 .logo-mini-container {
@@ -92,7 +95,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
   z-index: 100;
 
   &.logo-final-position {
@@ -264,6 +267,52 @@ input:focus {
   outline: none;
 }
 
+.forgot-password {
+  @include dFlex();
+  width: 100%;
+  padding: 0px 20px 0px 20px;
+
+  >a {
+    @include font($fs: 18px, $fw: 400);
+    color: $purple_2;
+    padding: 5px 15px;
+
+
+    &:hover {
+      @include font($fs: 18px, $fw: 500);
+      color: $purple_1;
+      border-radius: 30px;
+      background-color: $ice_blue;
+    }
+  }
+}
+
+.line-blue {
+  position: relative;
+  width: 82.5%;
+  max-width: 486px;
+  @include dFlex();
+  height: 30px;
+
+  >img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  >p {
+    @include dFlex();
+    position: absolute;
+    width: 80px;
+    background-color: $white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+}
+
 .dialog-button {
   @include dFlex($g: 30px);
   width: 100%;
@@ -315,90 +364,86 @@ footer {
 @media(max-width: 600px) {
 
   .start-animation {
-      @include dFlex();
-      flex-direction: column;
-    }
-  
-    /*--------------------------------------------------   Logo Mini   --------------------------------------------------*/
-    .logo-mini-container {
-      width: 300px;
-      left: calc(50% - 150px);
-    }
-  
-    .logo-mini {
-      width: 69px;
-      height: 69px;
-    }
-  
-    @keyframes slide-left-mobile {
-      0% {
-        transform: translate(-50%, -50%);
-      }
-  
-      100% {
-        transform: translate(-50%, -50%) translateX(-50px);
-      }
-    }
-  
-    .slide-left-mobile {
-      animation: slide-left-mobile 0.5s linear 1.5s forwards;
-    }
-  
-    /*--------------------------------------------------   Logo Mini End   --------------------------------------------------*/
-    /*--------------------------------------------------   Text Mini   --------------------------------------------------*/
-    .text-container {
-      width: 135px;
-      position: absolute;
-      top: 50%;
-      left: calc(50% - 150px);
+    @include dFlex();
+    flex-direction: column;
+  }
+
+  /*--------------------------------------------------   Logo Mini   --------------------------------------------------*/
+  .logo-mini-container {
+    width: 300px;
+    left: calc(50% - 150px);
+  }
+
+  .logo-mini {
+    width: 69px;
+    height: 69px;
+  }
+
+  @keyframes slide-left-mobile {
+    0% {
       transform: translate(-50%, -50%);
     }
-  
-    .text {
+
+    100% {
+      transform: translate(-50%, -50%) translateX(-50px);
+    }
+  }
+
+  .slide-left-mobile {
+    animation: slide-left-mobile 0.5s linear 1.5s forwards;
+  }
+
+  /*--------------------------------------------------   Logo Mini End   --------------------------------------------------*/
+  /*--------------------------------------------------   Text Mini   --------------------------------------------------*/
+  .text-container {
+    width: 135px;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 150px);
+    transform: translate(-50%, -50%);
+  }
+
+  .text {
+    @include dFlex();
+    @include font($fs: 32px, $fw: 700);
+    color: $white;
+  }
+
+  @keyframes slide-right-mobile {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) translateX(190px);
+    }
+  }
+
+  .slide-right-mobile {
+    animation: slide-right-mobile 0.3s ease-in both;
+    animation-delay: 2.5s;
+  }
+
+  /*--------------------------------------------------   Text Mini End   --------------------------------------------------*/
+
+  .animated-logo {
+    position: absolute;
+    height: 69px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.5s ease-in-out;
+    z-index: 100;
+
+    &.logo-final-position {
       @include dFlex();
-      @include font($fs: 32px, $fw: 700);
-      color: $white;
-    }
-  
-    @keyframes slide-right-mobile {
-      0% {
-        transform: translate(-50%, -50%);
-      }
-  
-      100% {
-        transform: translate(-50%, -50%) translateX(190px);
-      }
-    }
-  
-    .slide-right-mobile {
-      animation: slide-right-mobile 0.3s ease-in both;
-      animation-delay: 2.5s;
-    }
-  
-    /*--------------------------------------------------   Text Mini End   --------------------------------------------------*/
-  
-  
-    .animated-logo {
-      position: absolute;
-      height: 69px;
-      top: 50%;
+      width: 242px;
+      height: 70px;
+      top: 92px;
       left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      transition: all 0.5s ease-in-out;
-      z-index: 100;
-  
-      &.logo-final-position {
-        @include dFlex();
-        width: 242px;
-        height: 70px;
-        top: 92px;
-        left: 50%;
-        transform: translate(-50%, 0);
-      }
+      transform: translate(-50%, 0);
     }
-  
-
-
+  }
 
   header {
     @include dFlex();
@@ -425,6 +470,7 @@ footer {
     max-width: 398px;
     min-width: 300px;
     padding: 35px 20px;
+    margin-top: 50px;
   }
 
   .headline {
@@ -458,18 +504,47 @@ footer {
     min-width: 270px;
   }
 
+    .line-blue {
+      // position: relative;
+      width: 92.55vw;
+        max-width: 398px;
+        min-width: 300px;
+      // @include dFlex();
+      // height: 30px;
+  
+      >img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+      }
+  
+      >p {
+        @include dFlex();
+        position: absolute;
+        width: 80px;
+        background-color: $white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+  
+      }
+    }
+
   .signup {
     @include dFlex($g: 20px);
     position: relative;
     top: auto;
     right: auto;
+    margin-top: 50px;
 
     .link {
       border: 1px solid;
       border-radius: 25px;
       border-color: $purple_2;
       width: 100%;
-      
+
       &:hover {
         border-color: $purple_2;
       }
@@ -480,6 +555,10 @@ footer {
       }
     }
   }
+}
+
+footer {
+  padding: 50px 0px 40px 0px;
 }
 
 @media(max-width: 400px) {

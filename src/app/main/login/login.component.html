@@ -1,10 +1,16 @@
 <!-------------------------------------------------- BOf Start Animation -------------------------------------------------->
 <section class="start-animation" [ngClass]="{ hidden: animationFinished }">
   <div class="start-container" [ngClass]="{ 'fade-out': faded }">
-    <div class="logo-mini-container" [ngClass]="{ 'slide-left': !isMobile, 'slide-left-mobile': isMobile }">
+    <div
+      class="logo-mini-container"
+      [ngClass]="{ 'slide-left': !isMobile, 'slide-left-mobile': isMobile }"
+    >
       <img class="logo-mini" src="assets/img/logo-mini.svg" />
     </div>
-    <div class="text-container slide-right" [ngClass]="{ 'slide-right': !isMobile, 'slide-right-mobile': isMobile }">
+    <div
+      class="text-container slide-right"
+      [ngClass]="{ 'slide-right': !isMobile, 'slide-right-mobile': isMobile }"
+    >
       <p class="text">DABubble</p>
     </div>
   </div>
@@ -106,6 +112,41 @@
         </button>
         <button class="btn-guest-login" type="submit">Gäste-Login</button>
       </div>
+
+      <div class="forgot-password">
+        <a>Passwort vergessen?</a>
+      </div>
+
+      <div class="line-blue">
+        <img src="assets/img/icons/line.svg">
+        <p>ODER</p>
+      </div>
+
+      <div class="input-google-login">
+          <div
+            class="input-container"
+            [ngClass]="{
+              'input-focused': focusedInput === 'email',
+              'input-invalid': emailError
+            }"
+          >
+            <img src="assets/img/icons/google.svg" alt="Google Icon" />
+            <input
+              [(ngModel)]="email"
+              name="email"
+              type="email"
+              placeholder="Anmelden mit Google"
+              required
+              #emailField
+              (focus)="onFocus('email')"
+              (blur)="onBlur(); isEmailValid = eMailPattern.test(email)"
+              (input)="onEmailChange()"
+            />
+          </div>
+          @if(emailError && (email || !isEmailValid)) {
+          <p class="error-message">{{ emailError }}</p>
+          }
+        </div>
     </form>
 
     <div class="signup">

@@ -29,12 +29,12 @@ export class AnimationComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // this.isAnimationPlayed =
-    //   localStorage.getItem('isAnimationPlayed') === 'true';
+    this.isAnimationPlayed =
+      localStorage.getItem('isAnimationPlayed') === 'true';
 
     if (!this.isAnimationPlayed) {
       this.isMobile = window.innerWidth <= 600; // Initialwert
-      
+
       setTimeout(() => {
         this.faded = true;
       }, 3000);
@@ -44,10 +44,11 @@ export class AnimationComponent implements OnInit {
       setTimeout(() => {
         this.isLogoShifted = true;
       }, 3300);
-      // setTimeout(() => {
-      //   this.animationFinished = true; // Animation ist fertig, Login-Seite anzeigen
-      // }, 4500);
-      // localStorage.setItem('isAnimationPlayed', 'true');
+      setTimeout(() => {
+        this.animationFinished = true; // Animation ist fertig, Login-Seite anzeigen
+      }, 4000);
+
+      localStorage.setItem('isAnimationPlayed', 'true');
     } else {
       // Setze die Seite in den Zustand nach der Animation
       this.faded = true;
