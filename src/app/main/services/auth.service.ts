@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { addDoc, collection, doc, Firestore, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendPasswordResetEmail } from 'firebase/auth';
 
 
 @Injectable({
@@ -110,4 +110,11 @@ export class AuthService {
       };
     }
   }
+
+  passwordReset(email: string): Promise<void> {
+    return sendPasswordResetEmail(this.auth, email)
+    .then(() => {
+      // console.log('Passwort-Reset-E-Mail gesendet!');
+    }
+  )};
 }
