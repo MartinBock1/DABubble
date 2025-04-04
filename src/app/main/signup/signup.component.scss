@@ -193,37 +193,59 @@ input {
 }
 
 footer {
-  @include dFlex($g: 50px);
-  @include font($fs: 18px, $fw: 400);
+  @include dFlex($g: 10px);
   color: $purple_2;
-  width: 100%;
-  padding: 75px 0px 45px 0px;
+  padding: 75px 0px 40px 0px;
+
+  .link-container {
+    @include dFlex();
+    width: 140px;
+
+    >a {
+      @include font($fs: 18px, $fw: 400);
+      padding: 10px 15px;
+    }
+
+    border: 1px solid $ice_blue;
+    border-radius: 25px;
+
+    &:hover {
+      color: $purple_1;
+      border: 1px solid;
+      border-radius: 25px;
+      border-color: $lightPurple;
+
+      >a {
+        @include font($fs: 18px, $fw: 700);
+      }
+    }
+  }
 }
 
 /*--------------------------------------------------   Mobile   --------------------------------------------------*/
 @media(max-width: 600px) {
 
   header {
-      @include dFlex();
-      padding: 75px 0px 0px 0px;
-  
-      .logo {
-        width: 204px;
-        height: 56px;
-      }
+    @include dFlex();
+    padding: 75px 0px 0px 0px;
+
+    .logo {
+      width: 204px;
+      height: 56px;
     }
-    
-    .dialog-container {
-      @include dFlex($g: 40px);
-      flex-direction: column;
-      background-color: $white;
-      width: 92.55vw;
-      max-width: 398px;
-      min-width: 300px;
-      border-radius: 30px;
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
+  }
+
+  .dialog-container {
+    @include dFlex($g: 40px);
+    flex-direction: column;
+    background-color: $white;
+    width: 92.55vw;
+    max-width: 398px;
+    min-width: 300px;
+    border-radius: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 
   .headline {
     @include dFlex($jc: space-between, $g: 15px);
@@ -264,18 +286,18 @@ footer {
     min-width: 270px;
   }
 
-    .input-container {     
-      height: 50px;
-      border-radius: 100px;
-      padding: 13px 32px;
-    }
+  .input-container {
+    height: 50px;
+    border-radius: 100px;
+    padding: 13px 32px;
+  }
 }
 
 @media(max-width:400px) {
   .subtext {
-      @include font($fs: 16px, $fw: 400);
+    @include font($fs: 16px, $fw: 400);
   }
-  
+
   input {
     height: 22px;
     @include font($fs: 16px, $fw: 500);

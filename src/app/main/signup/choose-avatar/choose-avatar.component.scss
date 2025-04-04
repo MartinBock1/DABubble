@@ -166,11 +166,33 @@ header {
 }
 
 footer {
-  @include dFlex($g: 50px);
-  @include font($fs: 18px, $fw: 400);
+  @include dFlex($g: 10px);
   color: $purple_2;
-  width: 100%;
   padding: 75px 0px 40px 0px;
+
+  .link-container {
+    @include dFlex();
+    width: 140px;
+
+    >a {
+      @include font($fs: 18px, $fw: 400);
+      padding: 10px 15px;
+    }
+
+    border: 1px solid $ice_blue;
+    border-radius: 25px;
+
+    &:hover {
+      color: $purple_1;
+      border: 1px solid;
+      border-radius: 25px;
+      border-color: $lightPurple;
+
+      >a {
+        @include font($fs: 18px, $fw: 700);
+      }
+    }
+  }
 }
 
 /*--------------------------------------------------   Mobile   --------------------------------------------------*/
@@ -253,13 +275,13 @@ footer {
     }
   }
 
-    .overlay {
-      position: fixed;
-      bottom: 40px;
-      right: 10px;
-      padding: 20px;
-      @include font($fs: 22px, $fw: 700);
-    }
+  .overlay {
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    padding: 20px;
+    @include font($fs: 22px, $fw: 700);
+  }
 }
 
 @media(max-width: 400px) {

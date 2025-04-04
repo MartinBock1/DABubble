@@ -19,7 +19,7 @@
   height: 100%;
   @include dFlex();
   background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .logo-mini-container {
@@ -226,7 +226,8 @@ header {
 }
 
 .input-email,
-.input-password {
+.input-password,
+.input-google-login {
   @include dFlex($ai: flex-start);
   flex-direction: column;
   width: 82.5%;
@@ -265,6 +266,18 @@ input {
 
 input:focus {
   outline: none;
+}
+
+.google-login {
+  @include dFlex($g: 20px);
+  cursor: pointer;
+  @include font($fs: 17px, $fw: 400);
+  color: $purple_1;
+
+  &:hover {
+    border-color: $purple_1;
+    @include font($fs: 17px, $fw: 700);
+  }
 }
 
 .forgot-password {
@@ -354,10 +367,49 @@ input:focus {
 }
 
 footer {
-  @include dFlex($g: 50px);
-  @include font($fs: 18px, $fw: 400);
+  @include dFlex($g: 10px);  
   color: $purple_2;
   padding: 75px 0px 40px 0px;
+
+  .link-container {
+    @include dFlex();
+    width: 140px;
+
+    >a {
+      @include font($fs: 18px, $fw: 400);
+      padding: 10px 15px;
+    }
+
+    border: 1px solid $ice_blue;
+    border-radius: 25px;
+
+    &:hover {
+      color: $purple_1;
+      border: 1px solid;
+      border-radius: 25px;
+      border-color: $lightPurple;
+
+      >a {
+        @include font($fs: 18px, $fw: 700);
+      }
+    }
+  }
+
+  >a {
+    // width: 100%;
+    padding: 10px 15px;
+    border: 1px solid $lightPurple;
+    border-radius: 25px;
+
+    &:hover {
+      color: $purple_1;
+      @include font($fs: 18px, $fw: 700);
+      border: 1px solid;
+      border-radius: 25px;
+      border-color: $lightPurple;
+      // width: 100%;
+    }
+  }
 }
 
 /*--------------------------------------------------   Mobile   --------------------------------------------------*/
@@ -498,39 +550,59 @@ footer {
   }
 
   .input-email,
-  .input-password {
+  .input-password,
+  .input-google-login {
     width: 89.94vw;
     max-width: 358px;
     min-width: 270px;
   }
 
-    .line-blue {
-      // position: relative;
-      width: 92.55vw;
-        max-width: 398px;
-        min-width: 300px;
-      // @include dFlex();
-      // height: 30px;
-  
-      >img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 90%;
-      }
-  
-      >p {
-        @include dFlex();
-        position: absolute;
-        width: 80px;
-        background-color: $white;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-  
-      }
+  .input-container {
+
+    &:hover {
+      border: unset;
     }
+  }
+
+  .line-blue {
+    // position: relative;
+    width: 92.55vw;
+    max-width: 398px;
+    min-width: 300px;
+    // @include dFlex();
+    // height: 30px;
+
+    >img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+    }
+
+    >p {
+      @include dFlex();
+      position: absolute;
+      width: 80px;
+      background-color: $white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+    }
+  }
+
+  .google-login {
+    @include dFlex($g: 20px);
+    cursor: pointer;
+    @include font($fs: 17px, $fw: 400);
+    color: $purple_1;
+
+    &:hover {
+      @include font($fs: 17px, $fw: 400);
+      border: unset;
+    }
+  }
 
   .signup {
     @include dFlex($g: 20px);
@@ -559,6 +631,19 @@ footer {
 
 footer {
   padding: 50px 0px 40px 0px;
+
+  >a {
+    color: $purple_1;
+    width: 100%;
+    padding: 10px 15px;
+
+    &:hover {
+      border: 1px solid;
+      border-radius: 25px;
+      border-color: $purple_2;
+      width: 100%;
+    }
+  }
 }
 
 @media(max-width: 400px) {

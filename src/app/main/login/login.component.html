@@ -102,6 +102,24 @@
         </div>
       </div>
 
+      <div class="forgot-password">
+        <a>Passwort vergessen?</a>
+      </div>
+
+      <div class="line-blue">
+        <img src="assets/img/icons/line.svg" />
+        <p>ODER</p>
+      </div>
+
+      <div class="input-google-login">
+        <!-- <a (click)="onSignInWithGoggle()"> -->
+          <div class="input-container google-login" (click)="onSignInWithGoggle()">
+            <img src="assets/img/icons/google.svg" alt="Google Icon" />
+            <p>Anmelden mit Google</p>
+          </div>
+        <!-- </a> -->
+      </div>
+
       <div class="dialog-button">
         <button
           class="btn-login"
@@ -112,41 +130,6 @@
         </button>
         <button class="btn-guest-login" type="submit">Gäste-Login</button>
       </div>
-
-      <div class="forgot-password">
-        <a>Passwort vergessen?</a>
-      </div>
-
-      <div class="line-blue">
-        <img src="assets/img/icons/line.svg">
-        <p>ODER</p>
-      </div>
-
-      <div class="input-google-login">
-          <div
-            class="input-container"
-            [ngClass]="{
-              'input-focused': focusedInput === 'email',
-              'input-invalid': emailError
-            }"
-          >
-            <img src="assets/img/icons/google.svg" alt="Google Icon" />
-            <input
-              [(ngModel)]="email"
-              name="email"
-              type="email"
-              placeholder="Anmelden mit Google"
-              required
-              #emailField
-              (focus)="onFocus('email')"
-              (blur)="onBlur(); isEmailValid = eMailPattern.test(email)"
-              (input)="onEmailChange()"
-            />
-          </div>
-          @if(emailError && (email || !isEmailValid)) {
-          <p class="error-message">{{ emailError }}</p>
-          }
-        </div>
     </form>
 
     <div class="signup">
@@ -157,8 +140,12 @@
     </div>
 
     <footer>
-      <a [routerLink]="['/legal']">Impressum</a>
-      <a [routerLink]="['/policy']">Datenschutz</a>
+      <div class="link-container">
+        <a [routerLink]="['/legal']">Impressum</a>
+      </div>
+      <div class="link-container">
+        <a [routerLink]="['/policy']">Datenschutz</a>
+      </div>
     </footer>
     }
   </div>

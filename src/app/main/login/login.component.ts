@@ -3,6 +3,7 @@ import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
       }, 3300);
       setTimeout(() => {
         this.animationFinished = true; // Animation ist fertig, Login-Seite anzeigen
-      }, 4000);
+      }, 4500);
 
       localStorage.setItem('isAnimationPlayed', 'true');
     } else {
@@ -152,6 +153,19 @@ export class LoginComponent implements OnInit {
 
   onBlur() {
     this.focusedInput = '';
+  }
+
+  onSignInWithGoggle() {
+    const googleAuthProvider = new GoogleAuthProvider();
+    signInWithPopup(this.authService.auth, googleAuthProvider)
+      .then((result) => {
+        console.log('Erfolgreich eingeloggt mit Google:', result.user);
+        this.router.navigate(['/']); // Weiterleitung nach erfolgreichem Login
+      })
+      .catch((error) => {
+        console.error('Fehler beim Einloggen mit Google:', error);
+        this.passwordError = '*Login mit Google fehlgeschlagen.';
+      });
   }
 }
 

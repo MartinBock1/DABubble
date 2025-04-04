@@ -8,6 +8,9 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
   providedIn: 'root',
 })
 export class AuthService {
+  googleAuthProvider(auth: Auth, googleAuthProvider: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor() {}
   auth = inject(Auth);
   firestore = inject(Firestore);
