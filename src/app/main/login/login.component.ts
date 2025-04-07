@@ -19,10 +19,9 @@ export class LoginComponent implements OnInit {
   userService = inject(UserService);
   router = inject(Router);
 
+  /** UI States */
   isMobile: boolean = false;
   faded: boolean = false;
-  /** UI States */
-  // isPageLoaded: boolean = false;
   isLogoShifted: boolean = false;
   isLogoVisible: boolean = false;
   animationFinished: boolean = false;
@@ -84,14 +83,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // Validierung und Fehlerbehandlung bei Eingabeänderungen
   onEmailChange() {
-    this.emailError = ''; // Fehler zurücksetzen, wenn der Benutzer ändert
+    this.emailError = ''; 
     this.isEmailValid = this.eMailPattern.test(this.email);
   }
 
   onPasswordChange() {
-    this.passwordError = ''; // Fehler zurücksetzen, wenn der Benutzer ändert
+    this.passwordError = ''; 
     this.isPasswordValid = this.passwordPattern.test(this.password);
   }
 
@@ -124,7 +122,7 @@ export class LoginComponent implements OnInit {
         if (result.valid) {
           console.log('Erfolgreich eingeloggt');
           this.clearInputfields();
-          // this.router.navigate(['/']); // Weiterleitung nach erfolgreichem Login
+          this.router.navigate(['/content']); 
         } else {
           this.passwordError =
             result.message ||
@@ -171,18 +169,44 @@ export class LoginComponent implements OnInit {
             uid: user.uid,
             name: user.displayName || 'Unbekannter Nutzer',
             email: user.email || '',
-            avatar: 'default-avatar.png',
+            avatar: 'assets/img/char-icons/avatar.svg',
           });
-        // } else {
-        //   console.log('User existiert bereits in Firestore');
+          // } else {
+          //   console.log('User existiert bereits in Firestore');
         }
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/content']);
       })
       .catch((error) => {
         // console.error('Fehler beim Einloggen mit Google:', error);
         this.passwordError = '*Login mit Google fehlgeschlagen.';
       });
+  }
+
+  async onGuestLogin() {
+    const guestUser = {
+      uid: '2m1B6rmNFsgqgZ5PYIgDA21uMWJ3',
+      name: 'Gast',
+      email: 'guest@test.com',
+      avatar: 'assets/img/char-icons/avatar.svg',
+    };
+
+    try {
+      const exists = await this.userService.checkIfUserExists(guestUser.uid);
+
+      if (!exists) {
+        await this.userService.createUser(guestUser);
+      }
+
+      // Optional: Authentifiziere den Gast technisch, z.B. mit einer Gast-Session oder Dummy-Login
+      // Alternativ kannst du einfach Zustand setzen oder in Memory speichern
+
+      console.log('Gastmodus aktiviert');
+      this.router.navigate(['/content']);
+    } catch (error) {
+      // console.error('Fehler beim Gast-Login:', error);
+      this.passwordError = '*Gast-Login fehlgeschlagen.';
+    }
   }
 }
 
