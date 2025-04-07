@@ -19,8 +19,8 @@ export class PasswordResetComponent {
   email: string = '';
   focusedInput: string = '';
   isEmailValid: boolean = true;
-
   eMailPattern = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/;
+  showOverlay = false;
 
   onFocus(inputName: string) {
     this.focusedInput = inputName;
@@ -36,7 +36,11 @@ export class PasswordResetComponent {
       try {
         await this.authService.passwordReset(this.email);
         // alert('Password reset email sent!');
-        this.router.navigate(['/login']);
+        this.showOverlay = true;
+        setTimeout(() => {
+          this.showOverlay = false;
+          this.router.navigate(['/login']);
+        }, 3000);
       } catch (error) {
         console.error('Error sending password reset email:', error);
       }
