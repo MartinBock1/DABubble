@@ -3,7 +3,8 @@ import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+import { signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 export class LoginComponent implements OnInit {
   /** Injected Services */
   authService = inject(AuthService);
+  userService = inject(UserService);
   router = inject(Router);
 
   isMobile: boolean = false;
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   // isPageLoaded: boolean = false;
   isLogoShifted: boolean = false;
   isLogoVisible: boolean = false;
-  animationFinished: boolean = false; 
+  animationFinished: boolean = false;
 
   /** Check if animation already played */
   isAnimationPlayed: boolean = false;
@@ -158,12 +160,27 @@ export class LoginComponent implements OnInit {
   onSignInWithGoggle() {
     const googleAuthProvider = new GoogleAuthProvider();
     signInWithPopup(this.authService.auth, googleAuthProvider)
-      .then((result) => {
-        console.log('Erfolgreich eingeloggt mit Google:', result.user);
-        this.router.navigate(['/']); // Weiterleitung nach erfolgreichem Login
+      .then(async (result) => {
+        const user = result.user;
+        // console.log('Erfolgreich eingeloggt mit Google:', user);
+
+        const exists = await this.userService.checkIfUserExists(user.uid);
+
+        if (!exists) {
+          await this.userService.createUser({
+            uid: user.uid,
+            name: user.displayName || 'Unbekannter Nutzer',
+            email: user.email || '',
+            avatar: 'default-avatar.png',
+          });
+        // } else {
+        //   console.log('User existiert bereits in Firestore');
+        }
+
+        this.router.navigate(['/']);
       })
       .catch((error) => {
-        console.error('Fehler beim Einloggen mit Google:', error);
+        // console.error('Fehler beim Einloggen mit Google:', error);
         this.passwordError = '*Login mit Google fehlgeschlagen.';
       });
   }
