@@ -60,10 +60,11 @@
     @include font($fs: 32px, $fw: 700);
   }
 
-  >a {
+  >p {
     @include font($fs: 18px, $fw: 600);
     text-decoration: none;
     color: $purple_3;
+    cursor: pointer;
   }
 }
 

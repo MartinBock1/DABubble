@@ -1,0 +1,29 @@
+<div class="profile-edit-overlay">
+  <div class="profile-edit-container">
+    <div class="profile-edit-header">
+      <h1>Dein Profil bearbeiten</h1>
+      <img
+        class="close-btn"
+        src="assets/img/icons/close-icon.svg"
+        alt="Schließen"
+        (click)="cancelEdit()"
+      />
+    </div>
+
+    <img class="profile-avatar" [src]="userData?.avatar" alt="Profilbild" />
+
+    <div class="name-edit">
+      <h2>Vollständiger Name</h2>
+      <input
+        type="text"
+        [(ngModel)]="updatedName"
+        [placeholder]="userData?.name"
+      />
+    </div>
+
+    <div class="button-group">
+      <button class="cancel-btn" (click)="cancelEdit()">Abbrechen</button>
+      <button class="save-btn" (click)="saveEdit()">Speichern</button>
+    </div>
+  </div>
+</div>

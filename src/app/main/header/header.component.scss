@@ -49,26 +49,22 @@ section {
     @include font($fs: 24px, $fw: 400);
     cursor: text;
 
-    // Remove border on focus
     &:focus {
       outline: none;
       border: none;
       padding-left: 40px;
     }
 
-    // Add the background image when the input is focused
     &.active {
       background-image: url('./../../../assets/img/icons/at-email-black.svg');
       background-repeat: no-repeat;
       background-position: left center;
     }
 
-    // Remove placeholder when the input is focused
     &:focus::placeholder {
-      visibility: hidden; // Hide the placeholder on focus
+      visibility: hidden; 
     }
 
-    // Default placeholder styling
     &::placeholder {
       color: $textGray;
     }
@@ -162,112 +158,3 @@ section {
 }
 
 /*--------------------------------------------------  EOF Overlay Styles Profil-Menu  --------------------------------------------------*/
-
-/*--------------------------------------------------  BOF Overlay Styles Profil-Edit  --------------------------------------------------*/
-// .profile-overlay {
-//   @include dFlex($jc: flex-end);
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   padding-right: 20px;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.6);
-//   z-index: 1000;
-// }
-
-// .profile-container {
-//   @include dFlex($g: 38px);
-//   flex-direction: column;
-//   background: white;
-//   border-top-left-radius: 30px;
-//   border-bottom-left-radius: 30px;
-//   border-bottom-right-radius: 30px;
-//   padding: 45px 40px;
-//   width: 500px;
-//   position: relative;
-// }
-
-// .profile-header {
-//   @include dFlex($jc: space-between);
-//   width: 100%;
-
-//   >h1 {
-//     @include font($fs: 24px, $fw: 700);
-//   }
-// }
-
-// .close-btn {
-//   border: none;
-//   width: 40px;
-//   height: 40px;
-//   cursor: pointer;
-
-//   &:hover {
-//     background: $ice_blue;
-//     border-radius: 50%;
-//   }
-// }
-
-// .profile-avatar {
-//   width: 200px;
-//   height: 200px;
-//   border-radius: 50%;
-// }
-
-// .name-edit {
-//   width: 100%;
-//   @include dFlex($jc: space-between);
-//   // @include font($fs: 32px, $fw: 700);
-
-//   >h2 {
-//     @include font($fs: 32px, $fw: 700);
-//   }
-
-//   >a {
-//     @include font($fs: 18px, $fw: 600);
-//     text-decoration: none;
-//     color: $purple_3;
-//   }
-// }
-
-// .status {
-//   @include dFlex($jc: flex-start, $g: 15px);
-//   width: 100%;
-
-//   >p {
-//     @include font($fs: 20px, $fw: 400);
-//     color: $textGray;
-//   }
-// }
-
-// .email-section {
-//   @include dFlex($jc: flex-start, $ai: flex-start, $g: 20px);
-//   width: 100%;
-
-//   .mail-icon {
-//     width: 30px;
-//     height: 30px;
-//   }
-
-//   >div {
-//     @include dFlex($ai: flex-start, $g: 20px);
-//     flex-direction: column;
-//   }
-
-//   .email-text {
-//     @include font($fs: 20px, $fw: 700);
-//   }
-
-//     .email-address {
-//       @include font($fs: 18px, $fw: 500);
-//       color: $profileEmail;
-//     }
-// }
-
-// .disabled-link {
-//   color: gray;
-//   pointer-events: none;
-// }
-
-/*--------------------------------------------------  EOF Overlay Styles Profil-Edit  --------------------------------------------------*/

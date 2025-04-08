@@ -95,5 +95,13 @@
   <app-profil-overlay
     [userData]="userData"
     (close)="closeProfileOverlay()"
+    (edit)="onEditProfile()"
+  ></app-profil-overlay>
+}
+
+@if(isProfileEditOverlayVisible) {
+  <app-profil-overlay
+    [userData]="userData"
+  (close)="closeProfileEditOverlay()">
   ></app-profil-overlay>
 }

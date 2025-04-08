@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   isActive: boolean = false;
   isOverlayVisible: boolean = false;
   isProfileOverlayVisible: boolean = false;
+  isProfileEditOverlayVisible = false;
   isActiv: boolean = false;
   userData: User | null = null;
   isGuestUser: boolean = false;
@@ -67,6 +68,15 @@ export class HeaderComponent implements OnInit {
 
   closeProfileOverlay(): void {
     this.isProfileOverlayVisible = false;
+  }
+
+  onEditProfile() {
+    this.isProfileOverlayVisible = false;
+    this.isProfileEditOverlayVisible = true;
+  }
+
+  closeProfileEditOverlay() {
+    this.isProfileEditOverlayVisible = false;
   }
 
   logout(): void {

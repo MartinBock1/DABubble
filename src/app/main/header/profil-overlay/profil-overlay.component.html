@@ -13,8 +13,17 @@
 
     <div class="name-edit">
       <h2>{{ userData?.name }}</h2>
-      <a href="#">Bearbeiten</a>
+      <p (click)="openEditOverlay(); $event.preventDefault()">Bearbeiten</p
+      >
     </div>
+
+    @if(showEditOverlay) {
+      <app-profil-bearbeiten-overlay       
+        [userData]="userData"
+        (close)="closeEditOverlay()"
+      >
+      </app-profil-bearbeiten-overlay>
+    }
 
     <div class="status">
       <img src="assets/img/icons/online-icon.svg" alt="Online Icon" />
