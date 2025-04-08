@@ -13,12 +13,32 @@
     <img class="profile-avatar" [src]="userData?.avatar" alt="Profilbild" />
 
     <div class="name-edit">
+      <!-- <img src="assets/img/icons/account-circle-icon.svg" alt="Account Circle Icon">
       <h2>Vollständiger Name</h2>
       <input
         type="text"
         [(ngModel)]="updatedName"
         [placeholder]="userData?.name"
-      />
+      /> -->
+      <div class="name-edit-header">
+        <img src="assets/img/icons/account-circle-icon.svg" alt="Account Circle Icon">
+        <h2>Vollständiger Name</h2>        
+      </div>
+      <div
+        class="input-container"
+        [ngClass]="{ 'input-focused': focusedInput === 'name' }"
+        (click)="focusInput(nameField)"
+      >
+        <input
+          [(ngModel)]="updatedName"
+          name="name"
+          type="text"
+          [placeholder]="isInputFocused ? '' : userData?.name"
+          #nameField
+          (focus)="onFocus('name')"
+          (blur)="onBlur()"
+        />
+      </div>
     </div>
 
     <div class="button-group">

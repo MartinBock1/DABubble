@@ -16,6 +16,8 @@ export class ProfilEditOverlayComponent {
   @Output() close = new EventEmitter<void>();
 
   updatedName: string = '';
+  focusedInput: string = '';
+  isInputFocused: boolean = false;
 
   constructor(private authService: AuthService) {}
 
@@ -35,5 +37,19 @@ export class ProfilEditOverlayComponent {
       await this.authService.updateUserName(this.updatedName.trim());
       this.close.emit();
     }
+  }
+
+  focusInput(input: HTMLInputElement) {
+    input.focus();
+  }
+
+  onFocus(inputName: string) {
+    this.focusedInput = inputName;
+    this.isInputFocused = true;
+  }
+
+  onBlur() {
+    this.focusedInput = '';
+    this.isInputFocused = false;
   }
 }

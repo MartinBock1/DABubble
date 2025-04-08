@@ -1,69 +1,103 @@
+@import './../../../../styles.scss';
+
 .profile-edit-overlay {
+  @include dFlex($jc: flex-end);
   position: fixed;
   top: 0;
   left: 0;
+  padding-right: 20px;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
 
 .profile-edit-container {
-  background: white;
-  border-radius: 20px;
-  padding: 40px;
-  width: 500px;
-  display: flex;
+  @include dFlex($g: 38px);
   flex-direction: column;
-  align-items: center;
-  gap: 30px;
+  background: white;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding: 45px 40px;
+  width: 500px;
+  position: relative;
 }
 
 .profile-edit-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include dFlex($jc: space-between);
   width: 100%;
 
-  h1 {
-    font-size: 24px;
-    font-weight: 700;
+  >h1 {
+    @include font($fs: 24px, $fw: 700);
   }
+}
 
-  .close-btn {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
+.close-btn {
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background: $ice_blue;
+    border-radius: 50%;
   }
 }
 
 .profile-avatar {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  object-fit: cover;
 }
 
 .name-edit {
+  @include dFlex($g: 20px);
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 
-  h2 {
-    font-size: 18px;
-    font-weight: 600;
+
+  .name-edit-header {
+    @include dFlex($jc: flex-start, $g: 20px);
+    width: 100%;
+
+    >h2 {
+      @include font($fs: 20px, $fw: 700);
+    }
+  }
+
+  .input-container {
+    @include dFlex($jc: flex-start, $g: 25px);
+    width: 100%;
+    border: 1px solid $lightPurple;
+    border-radius: 100px;
+    padding: 15px 20px;
+    color: $textGray;
+
+    &.input-focused {
+      border: 1px solid $purple_3;
+    }
   }
 
   input {
-    font-size: 16px;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    width: 100%;
+    all: unset;
+    height: 24px;
+    @include font($fs: 18px, $fw: 500);
+    cursor: text;
+    flex: 1;
+
+    &::placeholder {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      /* Sanfte Übergänge für den Placeholder */
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
+      /* Placeholder ausblenden, wenn das Input-Feld den Fokus hat */
+    }
   }
 }
 

@@ -12,7 +12,12 @@ import { ProfilEditOverlayComponent } from "./profil-edit-overlay/profil-edit-ov
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProfilOverlayComponent, ProfilEditOverlayComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ProfilOverlayComponent,
+    ProfilEditOverlayComponent,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -33,13 +38,24 @@ export class HeaderComponent implements OnInit {
   userData: User | null = null;
   isGuestUser: boolean = false;
 
+  // ngOnInit() {
+  //   this.authService.getCurrentUserData().then((user) => {
+  //     if (user) {
+  //       this.userData = user;
+  //       this.isGuestUser = user.name === 'Gast';
+  //     }
+  //   });
+  // }
   ngOnInit() {
-    this.authService.getCurrentUserData().then((user) => {
+    this.userService.currentUser$.subscribe((user) => {
       if (user) {
         this.userData = user;
         this.isGuestUser = user.name === 'Gast';
       }
     });
+
+    // Initial holen
+    this.authService.getCurrentUserData();
   }
 
   onFocus(): void {
@@ -82,8 +98,8 @@ export class HeaderComponent implements OnInit {
   }
 
   closeProfileEditOverlay() {
-     this.isProfileEditOverlayVisible = false;
-     this.isOverlayVisible = true;
+    this.isProfileEditOverlayVisible = false;
+    this.isOverlayVisible = true;
   }
 
   logout(): void {

@@ -169,6 +169,22 @@ export class AuthService {
     });
   }
 
+  // async updateUserName(newName: string): Promise<void> {
+  //   if (this.auth.currentUser) {
+  //     const usersCollection = collection(this.firestore, 'users');
+  //     const q = query(
+  //       usersCollection,
+  //       where('uid', '==', this.auth.currentUser.uid)
+  //     );
+  //     const querySnapshot = await getDocs(q);
+
+  //     if (!querySnapshot.empty) {
+  //       const userDoc = querySnapshot.docs[0];
+  //       const userRef = doc(this.firestore, `users/${userDoc.id}`);
+  //       await updateDoc(userRef, { name: newName });
+  //     }
+  //   }
+  // }
   async updateUserName(newName: string): Promise<void> {
     if (this.auth.currentUser) {
       const usersCollection = collection(this.firestore, 'users');
@@ -182,6 +198,9 @@ export class AuthService {
         const userDoc = querySnapshot.docs[0];
         const userRef = doc(this.firestore, `users/${userDoc.id}`);
         await updateDoc(userRef, { name: newName });
+
+        // 👇 hole die aktuellen Daten erneut, triggert UserService Update
+        await this.userService.getUserByUID(this.auth.currentUser.uid);
       }
     }
   }
