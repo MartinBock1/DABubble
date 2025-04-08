@@ -6,7 +6,7 @@
         class="close-btn"
         src="assets/img/icons/close-icon.svg"
         alt="Schließen"
-        (click)="cancelEdit()"
+        (click)="close.emit()"
       />
     </div>
 
@@ -22,7 +22,7 @@
     </div>
 
     <div class="button-group">
-      <button class="cancel-btn" (click)="cancelEdit()">Abbrechen</button>
+      <button class="cancel-btn" (click)="close.emit()">Abbrechen</button>
       <button class="save-btn" (click)="saveEdit()">Speichern</button>
     </div>
   </div>

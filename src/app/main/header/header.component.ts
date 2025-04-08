@@ -7,11 +7,12 @@ import { User } from './../../interfaces/user';
 import { AuthService } from './../services/auth.service';
 import { UserService } from './../services/user.service'; 
 import { ProfilOverlayComponent } from './profil-overlay/profil-overlay.component';
+import { ProfilEditOverlayComponent } from "./profil-edit-overlay/profil-edit-overlay.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProfilOverlayComponent],
+  imports: [CommonModule, FormsModule, ProfilOverlayComponent, ProfilEditOverlayComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -22,12 +23,13 @@ export class HeaderComponent implements OnInit {
   router = inject(Router);
   auth = inject(Auth);
 
-  searchText: string = '';
-  isActive: boolean = false;
+  /** Overlays */
   isOverlayVisible: boolean = false;
   isProfileOverlayVisible: boolean = false;
   isProfileEditOverlayVisible = false;
-  isActiv: boolean = false;
+
+  searchText: string = '';
+  isActive: boolean = false;
   userData: User | null = null;
   isGuestUser: boolean = false;
 
@@ -49,7 +51,9 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleOverlay(): void {
-    this.isOverlayVisible = !this.isOverlayVisible; // Toggle overlay visibility
+    this.isOverlayVisible = !this.isOverlayVisible;
+    this.isProfileOverlayVisible = false;
+    this.isProfileEditOverlayVisible = false;
   }
 
   async goToProfile(): Promise<void> {
@@ -57,6 +61,7 @@ export class HeaderComponent implements OnInit {
       return;
     }
 
+    this.isOverlayVisible = false;
     this.isProfileOverlayVisible = true;
 
     if (this.userData) {
@@ -68,15 +73,17 @@ export class HeaderComponent implements OnInit {
 
   closeProfileOverlay(): void {
     this.isProfileOverlayVisible = false;
+    this.isOverlayVisible = true;
   }
 
-  onEditProfile() {
+  openProfileEditOverlay(): void {
     this.isProfileOverlayVisible = false;
     this.isProfileEditOverlayVisible = true;
   }
 
   closeProfileEditOverlay() {
-    this.isProfileEditOverlayVisible = false;
+     this.isProfileEditOverlayVisible = false;
+     this.isOverlayVisible = true;
   }
 
   logout(): void {

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfilBearbeitenOverlayComponent } from './profil-bearbeiten-overlay.component';
+import { ProfilBearbeitenOverlayComponent } from './profil-edit-overlay.component';
 
 describe('ProfilBearbeitenOverlayComponent', () => {
   let component: ProfilBearbeitenOverlayComponent;
@@ -8,10 +8,9 @@ describe('ProfilBearbeitenOverlayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProfilBearbeitenOverlayComponent]
-    })
-    .compileComponents();
-    
+      imports: [ProfilBearbeitenOverlayComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ProfilBearbeitenOverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

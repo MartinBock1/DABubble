@@ -1,17 +1,17 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { User } from './../../../interfaces/user';
-import { AuthService } from './../../services/auth.service';
+import { User } from '../../../interfaces/user';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-profil-bearbeiten-overlay',
+  selector: 'app-profil-edit-overlay',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './profil-bearbeiten-overlay.component.html',
-  styleUrl: './profil-bearbeiten-overlay.component.scss',
+  templateUrl: './profil-edit-overlay.component.html',
+  styleUrl: './profil-edit-overlay.component.scss',
 })
-export class ProfilBearbeitenOverlayComponent {
+export class ProfilEditOverlayComponent {
   @Input() userData: User | null = null;
   @Output() close = new EventEmitter<void>();
 
