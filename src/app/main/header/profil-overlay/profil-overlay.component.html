@@ -1,0 +1,38 @@
+<div class="profile-overlay">
+  <div class="profile-container">
+    <div class="profile-header">
+      <h1>Profil</h1>
+      <img
+        class="close-btn"
+        (click)="closeOverlay()"
+        src="assets/img/icons/close-icon.svg"
+        alt="Close Icon"
+      />
+    </div>
+    <img class="profile-avatar" [src]="userData?.avatar" alt="Profil Image" />
+
+    <div class="name-edit">
+      <h2>{{ userData?.name }}</h2>
+      <a href="#">Bearbeiten</a>
+    </div>
+
+    <div class="status">
+      <img src="assets/img/icons/online-icon.svg" alt="Online Icon" />
+      <p>Aktiv</p>
+    </div>
+
+    <div class="email-section">
+      <div>
+        <img
+          class="mail-icon"
+          src="assets/img/icons/mail-icon.svg"
+          alt="Mail Icon"
+        />
+      </div>
+      <div>
+        <p class="email-text">E-Mail-Adresse</p>
+        <p class="email-address">{{ userData?.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>

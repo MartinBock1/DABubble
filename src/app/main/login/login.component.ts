@@ -160,7 +160,15 @@ export class LoginComponent implements OnInit {
     signInWithPopup(this.authService.auth, googleAuthProvider)
       .then(async (result) => {
         const user = result.user;
-        // console.log('Erfolgreich eingeloggt mit Google:', user);
+        const defaultAvatar = 'assets/img/char-icons/avatar.svg';
+        const userAvatar = defaultAvatar;
+        
+        // console.log('Google-Login erfolgreich, Daten:', {
+        //   uid: user.uid,
+        //   name: user.displayName,
+        //   email: user.email,
+        //   avatar: userAvatar,
+        // });
 
         const exists = await this.userService.checkIfUserExists(user.uid);
 
@@ -169,7 +177,7 @@ export class LoginComponent implements OnInit {
             uid: user.uid,
             name: user.displayName || 'Unbekannter Nutzer',
             email: user.email || '',
-            avatar: 'assets/img/char-icons/avatar.svg',
+            avatar: userAvatar, // Setze hier immer den Standard-Avatar
           });
           // } else {
           //   console.log('User existiert bereits in Firestore');
@@ -191,6 +199,8 @@ export class LoginComponent implements OnInit {
       avatar: 'assets/img/char-icons/avatar.svg',
     };
 
+    console.log('Gast-Login erfolgreich, Daten:', guestUser);
+
     try {
       const exists = await this.userService.checkIfUserExists(guestUser.uid);
 
@@ -198,8 +208,9 @@ export class LoginComponent implements OnInit {
         await this.userService.createUser(guestUser);
       }
 
-      // Optional: Authentifiziere den Gast technisch, z.B. mit einer Gast-Session oder Dummy-Login
-      // Alternativ kannst du einfach Zustand setzen oder in Memory speichern
+      // Setze den Gast als eingeloggten Benutzer
+      this.authService.isUserLoggedIn = true;
+      this.authService.name = guestUser.name;
 
       console.log('Gastmodus aktiviert');
       this.router.navigate(['/content']);

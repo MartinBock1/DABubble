@@ -22,10 +22,10 @@
     </div>
 
     <div class="profil-menu" (click)="toggleOverlay()">
-      <p>Frederik Beck</p>
+      <p>{{ userData?.name }}</p>
       <img
         class="char-icon"
-        src="assets/img/char-icons/frederik-beck.svg"
+        src={{userData?.avatar}}
         alt="Char Icon"
       />
       <img
@@ -43,11 +43,57 @@
     <!-- Overlay and menu container -->
     @if(isOverlayVisible) {
     <div class="overlay" (click)="toggleOverlay()">
-      <div class="menu-container" >
-        <p (click)="goToProfile()">Profil</p>
+      <div class="menu-container">
+        <p [ngClass]="{ 'disabled-link': isGuestUser }" (click)="goToProfile()">
+          Profil
+        </p>
         <p (click)="logout()">Log out</p>
       </div>
     </div>
     }
   </div>
 </section>
+
+<!-- @if(isProfileOverlayVisible) {
+<div class="profile-overlay">
+  <div class="profile-container">
+    <div class="profile-header">
+      <h1>Profil</h1>
+      <img
+        class="close-btn"
+        (click)="closeProfileOverlay()"
+        src="assets/img/icons/close-icon.svg"
+        alt="Close Icon"
+      />
+    </div>
+    <img class="profile-avatar" [src]="userData?.avatar" alt="Profil Image" />
+
+    <div class="name-edit">
+      <h2>{{ userData?.name }}</h2>
+      <a href="#">Bearbeiten</a>
+    </div>
+
+    <div class="status">
+      <img src="assets/img/icons/online-icon.svg" alt="Online Icon">
+      <p>Aktiv</p>
+    </div>
+
+    <div class="email-section">
+      <div>
+        <img class="mail-icon" src="assets/img/icons/mail-icon.svg" alt="Mail Icon" />
+      </div>
+      <div>
+        <p class="email-text">E-Mail-Adresse</p>
+        <p class="email-address">{{ userData?.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+} -->
+
+@if(isProfileOverlayVisible) {
+  <app-profil-overlay
+    [userData]="userData"
+    (close)="closeProfileOverlay()"
+  ></app-profil-overlay>
+}

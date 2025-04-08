@@ -31,17 +31,28 @@ export class UserService {
     name: string;
     email: string;
     avatar: string;
-    createdAt?: Date;
+    // createdAt?: Date;
   }): Promise<void> {
     try {
       await addDoc(this.usersCollection, {
         ...userData,
-        createdAt: userData.createdAt || new Date(),
       });
       // console.log('User erfolgreich hinzugefügt.');
     } catch (error) {
       // console.error('Fehler beim Speichern des Users:', error);
       throw error;
     }
+  }
+
+  async getUserByUID(uid: string): Promise<any> {
+    const q = query(
+      collection(this.firestore, 'users'),
+      where('uid', '==', uid)
+    );
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+      return querySnapshot.docs[0].data();
+    }
+    return null;
   }
 }

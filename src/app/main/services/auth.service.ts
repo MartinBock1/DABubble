@@ -1,20 +1,43 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { addDoc, collection, doc, Firestore, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendPasswordResetEmail } from 'firebase/auth';
-
+import {
+  addDoc,
+  collection,
+  doc,
+  Firestore,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from '@angular/fire/firestore';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged,
+  User as FirebaseUser,
+} from 'firebase/auth';
+import { UserService } from './user.service';
+import { User } from '../../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  googleAuthProvider(auth: Auth, googleAuthProvider: any) {
-    throw new Error('Method not implemented.');
-  }
-  constructor() {}
+  constructor(private userService: UserService) {} // <-- UserService injizieren
+
   auth = inject(Auth);
   firestore = inject(Firestore);
   name = '';
+
+  //  Authentication State
+  isUserLoggedIn = false;
+
+  googleAuthProvider(auth: Auth, googleAuthProvider: any) {
+    throw new Error('Method not implemented.');
+  }
 
   async signupUser(
     name: string,
@@ -34,6 +57,7 @@ export class AuthService {
         const usersCollection = collection(this.firestore, 'users');
         await addDoc(usersCollection, {
           name: name,
+          email: email,
           avatar: 'assets/img/char-icons/avatar.svg',
           uid: user.uid,
         });
@@ -112,9 +136,36 @@ export class AuthService {
   }
 
   passwordReset(email: string): Promise<void> {
-    return sendPasswordResetEmail(this.auth, email)
-    .then(() => {
+    return sendPasswordResetEmail(this.auth, email).then(() => {
       // console.log('Passwort-Reset-E-Mail gesendet!');
-    }
-  )};
+    });
+  }
+
+  logout(): Promise<void> {
+    return signOut(this.auth)
+      .then(() => {
+        // console.log('User wurde ausgeloggt');
+        this.isUserLoggedIn = false;
+        this.name = '';
+      })
+      .catch((error) => {
+        console.error('Mist, ist schief gelaufen', error);
+      });
+  }
+
+  getCurrentUserData(): Promise<User | null> {
+    return new Promise((resolve) => {
+      onAuthStateChanged(
+        this.auth,
+        async (firebaseUser: FirebaseUser | null) => {
+          if (firebaseUser) {
+            const data = await this.userService.getUserByUID(firebaseUser.uid);
+            resolve(data);
+          } else {
+            resolve(null);
+          }
+        }
+      );
+    });
+  }
 }
