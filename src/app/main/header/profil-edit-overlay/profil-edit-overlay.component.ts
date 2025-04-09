@@ -22,11 +22,11 @@ export class ProfilEditOverlayComponent {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {
-    if (this.userData) {
-      this.updatedName = this.userData.name || '';
-    }
-  }
+  // ngOnInit() {
+  //   if (this.userData) {
+  //     this.updatedName = this.userData.name || '';
+  //   }
+  // }
 
   cancelEdit(): void {
     this.updatedName = '';
