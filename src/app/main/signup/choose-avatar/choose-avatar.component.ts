@@ -24,7 +24,7 @@ export class ChooseAvatarComponent implements OnInit {
   authService = inject(AuthService);
   router = inject(Router);
   
-  selectedAvatar = signal('assets/img/char-icons/avatar.svg');
+  selectedAvatar = signal('avatar.svg');
   userData!: User;
   showOverlay = false;
 
@@ -48,7 +48,7 @@ export class ChooseAvatarComponent implements OnInit {
             this.userData = doc.data() as User;
             // console.log('Benutzerdaten geladen:', this.userData);
             const avatarPath =
-              this.userData?.avatar || 'assets/img/char-icons/avatar.svg';
+              this.userData?.avatar || 'avatar.svg';
             this.selectedAvatar.set(avatarPath);
           });
         } else {

@@ -160,7 +160,7 @@ export class LoginComponent implements OnInit {
     signInWithPopup(this.authService.auth, googleAuthProvider)
       .then(async (result) => {
         const user = result.user;
-        const defaultAvatar = 'assets/img/char-icons/avatar.svg';
+        const defaultAvatar = 'avatar.svg';
         const userAvatar = defaultAvatar;
         
         // console.log('Google-Login erfolgreich, Daten:', {
@@ -196,7 +196,7 @@ export class LoginComponent implements OnInit {
       uid: '2m1B6rmNFsgqgZ5PYIgDA21uMWJ3',
       name: 'Gast',
       email: 'guest@test.com',
-      avatar: 'assets/img/char-icons/avatar.svg',
+      avatar: 'avatar.svg',
     };
 
     console.log('Gast-Login erfolgreich, Daten:', guestUser);

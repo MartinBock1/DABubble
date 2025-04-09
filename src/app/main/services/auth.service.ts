@@ -58,7 +58,7 @@ export class AuthService {
         await addDoc(usersCollection, {
           name: name,
           email: email,
-          avatar: 'assets/img/char-icons/avatar.svg',
+          avatar: 'avatar.svg',
           uid: user.uid,
         });
         // console.log('Benutzer-Dokument wurde hinzugefügt');

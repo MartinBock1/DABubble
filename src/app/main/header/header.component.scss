@@ -62,7 +62,7 @@ section {
     }
 
     &:focus::placeholder {
-      visibility: hidden; 
+      visibility: hidden;
     }
 
     &::placeholder {
@@ -83,11 +83,32 @@ section {
     @include font($fs: 32px, $fw: 700);
   }
 
-  .char-icon {
+  .profil-icon {
+    position: relative;
     width: 70px;
     height: 70px;
-    border-radius: 50%;
+
+    border: 1px solid;
+
+    .char-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+
+    .active {
+      position: absolute;
+      background-color: rgb(146, 199, 62);
+      right: 1px;
+      bottom: 0px;
+      border-radius: 50%;
+      width: 16.67px;
+      height: 16.67px;
+      border: 2px #edefff solid;
+      z-index: 5;
+    }
   }
+
 
   .arrow-listbox-down,
   .arrow-listbox-down-hover {
@@ -111,7 +132,7 @@ section {
     .arrow-listbox-down-hover {
       display: block;
     }
-  }    
+  }
 }
 
 /*--------------------------------------------------  BOF Overlay Styles Profil-Menu  --------------------------------------------------*/
@@ -156,12 +177,12 @@ section {
     }
   }
 
-    .disabled-link {
-      color: grey;
-      cursor: not-allowed;
-      pointer-events: none;
-      /* Verhindert, dass der Benutzer auf den Button klickt */
-    }
+  .disabled-link {
+    color: grey;
+    cursor: not-allowed;
+    pointer-events: none;
+    /* Verhindert, dass der Benutzer auf den Button klickt */
+  }
 }
 
 /*--------------------------------------------------  EOF Overlay Styles Profil-Menu  --------------------------------------------------*/

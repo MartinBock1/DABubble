@@ -23,7 +23,14 @@
 
     <div class="profil-menu" (click)="toggleOverlay()">
       <p>{{ userData?.name }}</p>
-      <img class="char-icon" src="{{ userData?.avatar }}" alt="Char Icon" />
+      <div class="profil-icon">
+        <img
+          class="char-icon"
+          src="assets/img/char-icons/{{ userData?.avatar }}"
+          alt="Char Icon"
+        />
+        <span class="active"></span>
+      </div>
       <img
         class="arrow-listbox-down"
         src="assets/img/icons/arrow-listbox-down-black.svg"
