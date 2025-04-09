@@ -212,6 +212,12 @@ export class LoginComponent implements OnInit {
       this.authService.isUserLoggedIn = true;
       this.authService.name = guestUser.name;
 
+      // Speichern des Gast-Users im localStorage
+      localStorage.setItem('guestUser', JSON.stringify(guestUser));
+
+      // Setze den Gast-User im UserService
+      this.userService.setCurrentUser(guestUser); // Setzt den Benutzer im UserService
+
       console.log('Gastmodus aktiviert');
       this.router.navigate(['/content']);
     } catch (error) {

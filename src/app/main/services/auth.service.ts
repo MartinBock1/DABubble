@@ -145,6 +145,7 @@ export class AuthService {
     return signOut(this.auth)
       .then(() => {
         // console.log('User wurde ausgeloggt');
+        localStorage.removeItem('guestUser');
         this.isUserLoggedIn = false;
         this.name = '';
       })

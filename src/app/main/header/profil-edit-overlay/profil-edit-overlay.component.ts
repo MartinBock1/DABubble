@@ -16,6 +16,7 @@ export class ProfilEditOverlayComponent {
   @Output() close = new EventEmitter<void>();
 
   updatedName: string = '';
+  newUpdatedName: string = '';
   focusedInput: string = '';
   isInputFocused: boolean = false;
 

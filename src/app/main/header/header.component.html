@@ -40,7 +40,10 @@
     @if(isOverlayVisible) {
     <div class="overlay" (click)="toggleOverlay()">
       <div class="menu-container" (click)="$event.stopPropagation()">
-        <p [ngClass]="{ 'disabled-link': isGuestUser }" (click)="goToProfile()">
+        <p
+          [ngClass]="{ 'disabled-link': isGuestUser }"
+          (click)="!isGuestUser && goToProfile()"
+        >
           Profil
         </p>
         <p (click)="logout()">Log out</p>
@@ -56,13 +59,10 @@
   (close)="closeProfileOverlay()"
   (edit)="openProfileEditOverlay()"
 ></app-profil-overlay>
-} 
-
-@if(isProfileEditOverlayVisible) {
+} @if(isProfileEditOverlayVisible) {
 <app-profil-edit-overlay
   [userData]="userData"
   (close)="closeProfileEditOverlay()"
 >
-  </app-profil-edit-overlay
->
+</app-profil-edit-overlay>
 }

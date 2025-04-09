@@ -33,7 +33,7 @@
           [(ngModel)]="updatedName"
           name="name"
           type="text"
-          [placeholder]="isInputFocused ? '' : userData?.name"
+          [placeholder]="userData?.name"
           #nameField
           (focus)="onFocus('name')"
           (blur)="onBlur()"

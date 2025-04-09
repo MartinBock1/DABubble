@@ -20,7 +20,14 @@ export class UserService {
   currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private firestore: Firestore) {
-    this.usersCollection = collection(this.firestore, 'users');
+    this.usersCollection = collection(this.firestore, 'users');  
+
+    // Überprüfen, ob ein Gast-User im localStorage gespeichert ist
+    const storedGuestUser = localStorage.getItem('guestUser');
+    if (storedGuestUser) {
+      const guestUser = JSON.parse(storedGuestUser);
+      this.setCurrentUser(guestUser); // Setze den Gast-User im UserService
+    }
   }
 
   async checkIfUserExists(uid: string): Promise<boolean> {
@@ -75,5 +82,10 @@ export class UserService {
       return user;
     }
     return null;
+  }
+
+  // Neue Methode, um einen Benutzer direkt zu setzen
+  setCurrentUser(user: any): void {
+    this.currentUserSubject.next(user); // Aktualisiert das Observable
   }
 }
