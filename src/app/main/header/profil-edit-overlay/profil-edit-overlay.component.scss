@@ -8,7 +8,7 @@
   padding-right: 20px;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
@@ -21,7 +21,9 @@
   border-bottom-right-radius: 30px;
   padding: 45px 40px;
   width: 500px;
-  position: relative;
+  position: absolute;
+  top: 100px;
+  right: 25px;
 }
 
 .profile-edit-header {
