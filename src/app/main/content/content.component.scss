@@ -8,6 +8,46 @@ section {
   @include dFlex($jc: flex-start, $ai: center);
   height: calc(100vh - 120px);
   width: 100%;
+  position: relative;
+}
+
+.workspace-menu-buttons {
+  @include dFlex();
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 347px;
+  cursor: pointer;
+
+  .menu-close-hover,
+  .menu-open-hover {
+    display: none;
+  }
+
+  &:hover {
+    .menu-close {
+      display: none;
+    }
+
+    .menu-close-hover {
+      display: block;
+    }
+
+    .menu-open {
+      display: none;
+    }
+
+    .menu-open-hover {
+      display: block;
+    }
+  }
+}
+
+.slide-out {
+  transform: translateX(-120%);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
 }
 
 .left {
@@ -21,6 +61,8 @@ section {
   margin-left: 25px;
   background-color: $white;
   border-radius: 30px;
+  transition: all 0.4s ease;
+  flex-shrink: 0; 
 }
 
 .headline {
@@ -78,6 +120,14 @@ h1 {
   border-radius: 30px;
   margin-left: 25px;
   margin-right: 25px;
+  transition: all 0.4s ease;
+}
+
+// Wenn .left ausgeblendet ist, nimmt .center mehr Platz ein
+.left-hidden {
+  .center {
+    margin-left: 25px;
+  }
 }
 
 .right {

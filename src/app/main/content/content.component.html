@@ -1,8 +1,8 @@
 <section class="content-max">
   <app-header></app-header>
 
-  <div class="content">
-    <div class="left">
+  <div class="content" [ngClass]="{ 'left-hidden': !isLeftVisible }">
+    <div class="left" [ngClass]="{ 'slide-out': !isLeftVisible }">
       <div class="headline"> 
         <img class="devspace-logo" src="assets/img/icons/devspace-logo.svg" alt="Devspace Logo">
         <h1>Devspace</h1>
@@ -11,6 +11,20 @@
           <img class="edit-square-icon-hover" src="assets/img/icons/edit-square-icon-purple.svg" alt="Edit Icon">
         </div>
       </div>
+    </div>
+    <div class="workspace-menu-buttons" >
+      <div class="button-close" (click)="toggleLeftPanel()">
+          @if(isLeftVisible) {
+          <img class="menu-close" src="assets/img/workspace-menu-close.svg" alt="Workspace Menu Close">
+          <img class="menu-close-hover" src="assets/img/workspace-menu-close-hover.svg" alt="Workspace Menu Close Hover">
+        }
+        </div>
+        <div class="button-open" (click)="toggleLeftPanel()">
+          @if(!isLeftVisible) {
+          <img class="menu-open" src="assets/img/workspace-menu-open.svg" alt="Workspace Menu Open">
+          <img class="menu-open-hover" src="assets/img/workspace-menu-open-hover.svg" alt="Workspace Menu Open Hover">
+        }
+        </div>
     </div>
 
     <div class="center">Test</div>

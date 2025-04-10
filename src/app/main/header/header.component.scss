@@ -74,8 +74,7 @@ section {
 
 .profil-menu {
   @include dFlex($jc: flex-end, $g: 20px);
-  width: 25.26vw;
-  max-width: 485px;
+  width: min(25.26vw, 485px);
   margin-right: 25px;
   cursor: pointer;
 
@@ -87,8 +86,6 @@ section {
     position: relative;
     width: 70px;
     height: 70px;
-
-    border: 1px solid;
 
     .char-icon {
       width: 70px;
