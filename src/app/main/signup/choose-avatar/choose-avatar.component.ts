@@ -11,6 +11,13 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { User } from '../../../interfaces/user';
 
+/**
+ * The ChooseAvatarComponent allows users to select an avatar after signing up.
+ * It loads the user's data, displays avatar options, and updates the selected avatar.
+ *
+ * Der ChooseAvatarComponent ermöglicht es Benutzern, nach der Anmeldung einen Avatar auszuwählen.
+ * Er lädt die Benutzerdaten, zeigt Avatar-Optionen an und aktualisiert den ausgewählten Avatar.
+ */
 @Component({
   selector: 'app-choose-avatar',
   standalone: true,
@@ -37,12 +44,29 @@ export class ChooseAvatarComponent implements OnInit {
     'steffen-hoffmann.svg',
   ];
 
+  /**
+   * Constructor injecting the ChangeDetectorRef for manual change detection.
+   * @param {ChangeDetectorRef} cdr - The ChangeDetectorRef instance.
+   *
+   * Konstruktor, der ChangeDetectorRef für manuelle Änderungserkennung injiziert.
+   * @param {ChangeDetectorRef} cdr - Die ChangeDetectorRef-Instanz.
+   */
   constructor(private cdr: ChangeDetectorRef) {}
 
+  /**
+   * Implements the OnInit interface. Loads the user's data on initialization.
+   *
+   * Implementiert das OnInit-Interface. Lädt die Benutzerdaten bei der Initialisierung.
+   */
   async ngOnInit() {
     await this.loadUserData();
   }
 
+  /**
+   * Loads the user's data from Firestore based on the current authenticated user.
+   *
+   * Lädt die Benutzerdaten aus Firestore basierend auf dem aktuell authentifizierten Benutzer.
+   */
   private async loadUserData() {
     if (this.authService.auth.currentUser) {
       const usersRef = collection(this.firestore, 'users');
@@ -67,20 +91,41 @@ export class ChooseAvatarComponent implements OnInit {
       }
     }
   }
-  
+
+  /**
+   * Returns the full URL for the given avatar path.
+   * @param {string} avatar - The avatar file name.
+   * @returns {string} The full URL to the avatar image.
+   *
+   * Gibt die vollständige URL für den angegebenen Avatar-Pfad zurück.
+   * @param {string} avatar - Der Dateiname des Avatars.
+   * @returns {string} Die vollständige URL zum Avatar-Bild.
+   */
   getAvatarUrl(avatar: string): string {
     return `assets/img/char-icons/${avatar}`;
   }
 
+  /**
+   * Selects a new avatar and updates the user's data in Firestore.
+   * @param {string} avatarPath - The path of the selected avatar.
+   *
+   * Wählt einen neuen Avatar aus und aktualisiert die Benutzerdaten in Firestore.
+   * @param {string} avatarPath - Der Pfad des ausgewählten Avatars.
+   */
   async selectAvatar(avatarPath: string) {
     // console.log('Ausgewählter Avatar: ', avatarPath);
     const selectedAvatarPath = avatarPath || 'avatar.svg'; // Standardwert, wenn leer
-     this.selectedAvatar.set(selectedAvatarPath);
+    this.selectedAvatar.set(selectedAvatarPath);
     await this.authService.updateUserAvatar(avatarPath);
     await this.loadUserData();
     this.cdr.detectChanges();
   }
 
+  /**
+   * Continues to the login page after showing an overlay for 3 seconds.
+   *
+   * Fährt fort zur Login-Seite, nachdem ein Overlay für 3 Sekunden angezeigt wurde.
+   */
   continue() {
     this.showOverlay = true;
 

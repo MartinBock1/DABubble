@@ -19,8 +19,7 @@
       />      
       <div class="avatar-list">
         @for(avatar of avatarOptions ; track avatar) {
-          <img
-            *ngFor="let avatar of avatarOptions"
+          <img           
             [src]="'assets/img/char-icons/' + avatar"
             alt="Avatar"
             [class.selected]="selectedAvatar === avatar"
