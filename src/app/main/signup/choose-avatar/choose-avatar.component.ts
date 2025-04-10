@@ -23,10 +23,19 @@ export class ChooseAvatarComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   authService = inject(AuthService);
   router = inject(Router);
-  
+
   selectedAvatar = signal('avatar.svg');
   userData!: User;
   showOverlay = false;
+
+  avatarOptions: string[] = [
+    'elise-roth.svg',
+    'elias-neumann.svg',
+    'frederik-beck.svg',
+    'noah-braun.svg',
+    'sofia-müller.svg',
+    'steffen-hoffmann.svg',
+  ];
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -47,8 +56,7 @@ export class ChooseAvatarComponent implements OnInit {
           querySnapshot.forEach((doc) => {
             this.userData = doc.data() as User;
             // console.log('Benutzerdaten geladen:', this.userData);
-            const avatarPath =
-              this.userData?.avatar || 'avatar.svg';
+            const avatarPath = this.userData?.avatar || 'avatar.svg';
             this.selectedAvatar.set(avatarPath);
           });
         } else {
@@ -59,10 +67,15 @@ export class ChooseAvatarComponent implements OnInit {
       }
     }
   }
+  
+  getAvatarUrl(avatar: string): string {
+    return `assets/img/char-icons/${avatar}`;
+  }
 
   async selectAvatar(avatarPath: string) {
     // console.log('Ausgewählter Avatar: ', avatarPath);
-    this.selectedAvatar.set(avatarPath);
+    const selectedAvatarPath = avatarPath || 'avatar.svg'; // Standardwert, wenn leer
+     this.selectedAvatar.set(selectedAvatarPath);
     await this.authService.updateUserAvatar(avatarPath);
     await this.loadUserData();
     this.cdr.detectChanges();

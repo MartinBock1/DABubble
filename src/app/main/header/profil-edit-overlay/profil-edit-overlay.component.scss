@@ -47,10 +47,29 @@
   }
 }
 
+.avatar-edit{
+  @include dFlex($g: 10px);
+  flex-direction: column;
+  width: 100%;
+}
+
 .profile-avatar {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+}
+
+.avatar-list {
+  @include dFlex($g: 10px);
+  flex-wrap: wrap;
+  width: 100%;
+
+  >img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 }
 
 .name-edit {
@@ -93,12 +112,10 @@
     &::placeholder {
       opacity: 1;
       transition: opacity 0.3s ease;
-      /* Sanfte Übergänge für den Placeholder */
     }
 
     &:focus::placeholder {
       opacity: 0;
-      /* Placeholder ausblenden, wenn das Input-Feld den Fokus hat */
     }
   }
 }

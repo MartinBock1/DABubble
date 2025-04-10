@@ -22,7 +22,11 @@
       <h1>Wähle deinen Avatar</h1>
       <div></div>
     </div>
-    <img class="avatar" [src]="selectedAvatar()" alt="Selected Avatar" />
+    <img
+      class="avatar"
+      [src]="getAvatarUrl(selectedAvatar())"
+      alt="Selected Avatar"
+    />
     <div class="user-box">
       @if(authService.name) {
       <h2>
@@ -34,34 +38,10 @@
 
     <div class="avatar-list">
       <img
-        src="assets/img/char-icons/elise-roth.svg"
-        alt="Char Icon"
-        (click)="selectAvatar('assets/img/char-icons/elise-roth.svg')"
-      />
-      <img
-        src="assets/img/char-icons/elias-neumann.svg"
-        alt="Char Icon"
-        (click)="selectAvatar('assets/img/char-icons/elias-neumann.svg')"
-      />
-      <img
-        src="assets/img/char-icons/frederik-beck.svg"
-        alt="Char Icon"
-        (click)="selectAvatar('assets/img/char-icons/frederik-beck.svg')"
-      />
-      <img
-        src="assets/img/char-icons/noah-braun.svg"
-        alt="Char Icon"
-        (click)="selectAvatar('assets/img/char-icons/noah-braun.svg')"
-      />
-      <img
-        src="assets/img/char-icons/sofia-müller.svg"
-        alt="Char Icon"
-        (click)="selectAvatar('assets/img/char-icons/sofia-müller.svg')"
-      />
-      <img
-        src="assets/img/char-icons/steffen-hoffmann.svg"
-        alt="Char Icon"
-        (click)="selectAvatar('assets/img/char-icons/steffen-hoffmann.svg')"
+        *ngFor="let avatar of avatarOptions"
+        [src]="getAvatarUrl(avatar)"
+        alt="Avatar"
+        (click)="selectAvatar(avatar)"
       />
     </div>
 
@@ -71,21 +51,19 @@
         <p>Konto erfolgreich erstellt!</p>
       </div>
     </div>
-  }
+    }
 
     <div class="dialog-button">
-      <button (click)="continue()">
-        Weiter
-      </button>
+      <button (click)="continue()">Weiter</button>
     </div>
   </div>
 
   <footer>
-      <div class="link-container">
-        <a [routerLink]="['/legal']">Impressum</a>
-      </div>
-      <div class="link-container">
-        <a [routerLink]="['/policy']">Datenschutz</a>
-      </div>
-    </footer>
+    <div class="link-container">
+      <a [routerLink]="['/legal']">Impressum</a>
+    </div>
+    <div class="link-container">
+      <a [routerLink]="['/policy']">Datenschutz</a>
+    </div>
+  </footer>
 </section>

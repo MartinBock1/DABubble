@@ -9,20 +9,34 @@
         (click)="close.emit()"
       />
     </div>
-
-    <img class="profile-avatar" [src]="'assets/img/char-icons/' + userData?.avatar" alt="Profilbild" />
+    
+    <div class="avatar-edit">
+      <h2>Avatar auswählen</h2>
+      <img
+        class="profile-avatar"
+        [src]="'assets/img/char-icons/' + selectedAvatar || 'assets/img/char-icons/' + userData?.avatar"
+        alt="Avatar Vorschau"
+      />      
+      <div class="avatar-list">
+        @for(avatar of avatarOptions ; track avatar) {
+          <img
+            *ngFor="let avatar of avatarOptions"
+            [src]="'assets/img/char-icons/' + avatar"
+            alt="Avatar"
+            [class.selected]="selectedAvatar === avatar"
+            (click)="selectAvatar(avatar)"
+          />
+        }
+      </div>
+    </div>
 
     <div class="name-edit">
-      <!-- <img src="assets/img/icons/account-circle-icon.svg" alt="Account Circle Icon">
-      <h2>Vollständiger Name</h2>
-      <input
-        type="text"
-        [(ngModel)]="updatedName"
-        [placeholder]="userData?.name"
-      /> -->
       <div class="name-edit-header">
-        <img src="assets/img/icons/account-circle-icon.svg" alt="Account Circle Icon">
-        <h2>Vollständiger Name</h2>        
+        <img
+          src="assets/img/icons/account-circle-icon.svg"
+          alt="Account Circle Icon"
+        />
+        <h2>Vollständiger Name</h2>
       </div>
       <div
         class="input-container"

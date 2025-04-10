@@ -14,8 +14,9 @@ section {
 .workspace-menu-buttons {
   @include dFlex();
   position: absolute;
+  top: 50%;
   left: 0;
-  bottom: 0;
+  transform: translateY(-50%);
   height: 347px;
   cursor: pointer;
 
