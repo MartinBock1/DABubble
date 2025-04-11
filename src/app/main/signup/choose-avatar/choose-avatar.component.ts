@@ -5,11 +5,11 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
 import { User } from '../../../interfaces/user';
+import { AuthService } from './../../../services/auth.service';
 
 /**
  * The ChooseAvatarComponent allows users to select an avatar after signing up.

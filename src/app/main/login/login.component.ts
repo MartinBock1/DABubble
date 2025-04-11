@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 import { Component, HostListener, inject, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
+import { AuthService } from './../../services/auth.service';
+import { UserService } from './../../services/user.service';
 
 /**
  * The LoginComponent handles user authentication, including login with email and password,

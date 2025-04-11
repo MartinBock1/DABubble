@@ -2,8 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from './../../services/auth.service';
 
+/**
+ * Component responsible for resetting the user's password.
+ * Allows the user to enter their email and request a password reset.
+ *
+ * Diese Komponente ist für das Zurücksetzen des Benutzerpassworts zuständig.
+ * Benutzer können ihre E-Mail-Adresse eingeben und einen Passwort-Reset anfordern.
+ */
 @Component({
   selector: 'app-password-reset',
   standalone: true,
@@ -22,20 +29,38 @@ export class PasswordResetComponent {
   eMailPattern = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/;
   showOverlay = false;
 
+  /**
+   * Sets the currently focused input field.
+   *
+   * Setzt das aktuell fokussierte Eingabefeld.
+   *
+   * @param inputName - Name of the focused input – Name des fokussierten Eingabefelds
+   */
   onFocus(inputName: string) {
     this.focusedInput = inputName;
   }
 
+  /**
+   * Resets the focus status when an input field loses focus.
+   *
+   * Setzt den Fokus zurück, wenn ein Eingabefeld den Fokus verliert.
+   */
   onBlur() {
     this.focusedInput = '';
   }
 
+  /**
+   * Validates the email and attempts to send a password reset email.
+   * If successful, shows a confirmation overlay and redirects to the login page.
+   *
+   * Validiert die E-Mail und versucht, eine Passwort-Reset-E-Mail zu senden.
+   * Bei Erfolg wird ein Bestätigungs-Overlay angezeigt und zur Login-Seite weitergeleitet.
+   */
   async forgotPassword() {
     if (this.eMailPattern.test(this.email)) {
       this.isEmailValid = true;
       try {
         await this.authService.passwordReset(this.email);
-        // alert('Password reset email sent!');
         this.showOverlay = true;
         setTimeout(() => {
           this.showOverlay = false;
