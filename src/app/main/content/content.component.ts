@@ -10,14 +10,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './content.component.scss',
 })
 export class ContentComponent {
-  isEditing: boolean = false;
   isLeftVisible: boolean = true;
-
-  toggleEditState(): void {
-    this.isEditing = !this.isEditing; // Toggle the state between true and false
-  }
+  isChannelVisible: boolean = true;
+  isMessagesVisible: boolean = true;
 
   toggleLeftPanel(): void {
     this.isLeftVisible = !this.isLeftVisible;
+  }
+
+  toggleChannels() {
+    this.isChannelVisible = !this.isChannelVisible;
+  }
+
+  toggleMessages() {
+    this.isMessagesVisible = !this.isMessagesVisible;
   }
 }

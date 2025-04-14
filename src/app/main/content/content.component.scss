@@ -63,53 +63,221 @@ section {
   background-color: $white;
   border-radius: 30px;
   transition: all 0.4s ease;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .headline {
   @include dFlex($jc: flex-start, $g: 15px);
   width: 100%;
-}
 
-.devspace-logo {
-  width: 60px;
-  height: 60px;
-}
-
-.bg-icon {
-  width: 40px;
-  height: 40px;
-  @include dFlex();
-  cursor: pointer;
-
-  .edit-square-icon-hover {
-    display: none;
+  .devspace-logo {
+    width: 60px;
+    height: 60px;
   }
 
-  .edit-square-icon,
-  .edit-square-icon-hover {
-    width: 24px;
-    height: 24px;
-  }
+  .bg-icon {
+    width: 40px;
+    height: 40px;
+    @include dFlex();
+    cursor: pointer;
 
-  &:hover {
-    background-color: $ice_blue;
-    border-radius: 50%;
-
-    .edit-square-icon {
+    .edit-square-icon-hover {
       display: none;
     }
 
+    .edit-square-icon,
     .edit-square-icon-hover {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background-color: $ice_blue;
+      border-radius: 50%;
+
+      .edit-square-icon {
+        display: none;
+      }
+
+      .edit-square-icon-hover {
+        display: block;
+      }
+    }
+  }
+
+  h1 {
+    @include font($fs: 24px, $fw: 700);
+    flex: 1;
+  }
+}
+
+.channels-headline {
+  @include dFlex($jc: space-between);
+  width: 100%;
+  cursor: pointer;
+
+  .channels-headline-container {
+    @include dFlex();
+    flex: 1;
+
+    .icon-down,
+    .icon-right {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .drop-down-icon-blue,
+    .drop-down-icon-right-blue,
+    .icon-blue {
+      display: none;
+    }
+
+    .drop-down-icon-right-black,
+    .drop-down-icon-right-blue {
+      transform: rotate(-90deg);
+      // display: none;
+    }
+
+    &:hover {
+
+      .drop-down-icon-blue,
+      .drop-down-icon-right-blue,
+      .icon-blue {
+        display: block;
+      }
+
+      .drop-down-icon-black,
+      .drop-down-icon-right-black,
+      .icon-black {
+        display: none;
+      }
+
+      .headline-text {
+        color: $purple_3;
+      }
+    }
+
+    .channels-headline-text {
+      @include dFlex($jc: flex-start, $g: 10px);
+      @include font($fs: 20px, $fw: 700);
+      flex: 1;
+      padding-left: 15px;
+
+      .channels-icon {
+        @include dFlex();
+      }
+    }
+  }
+}
+
+.icon-down,
+.icon-right {
+  @include dFlex();
+  width: 30px;
+  height: 30px;
+}
+
+.add-channel {
+  @include dFlex();
+  width: 30px;
+  height: 30px;
+
+  .plus-icon-hover {
+    display: none;
+  }
+
+  &:hover {
+    .plus-icon {
+      display: none;
+    }
+
+    .plus-icon-hover {
       display: block;
     }
   }
 }
 
-h1 {
-  @include font($fs: 24px, $fw: 700);
-  flex: 1;
+.channels {
+  @include dFlex($jc: flex-start, $ai: flex-start, $g: 10px);
+  flex-direction: column;
+  width: 100%;
+
+  .channel-names {
+    @include dFlex($jc: flex-start);
+    @include font($fs: 18px, $fw: 700);
+    flex: 1;
+    color: $purple_3;
+
+    .hashtag-icon-blue,
+    .hashtag-icon-black {
+      width: 24px;
+      height: 24px;
+    }
+
+    .hashtag-icon-black {
+      display: none;
+    }
+  }
+
+  .channel-names-center-container {
+    @include dFlex($jc: flex-start, $g: 10px);
+    width: 100%;
+    padding: 4px 20px;
+    border-radius: 20px;
+    background-color: $ice_blue;
+  }
 }
+
+.channel-add {
+  @include dFlex($jc: flex-start);
+  width: 100%;
+  cursor: pointer;
+
+  .add-channel-icon-black,
+  .add-channel-icon-blue {
+    width: 24px;
+    height: 24px;
+  }
+
+  .add-channel-icon-blue {
+    display: none;
+  }
+
+  .add-channel-text {
+    @include font($fs: 18px, $fw: 400);
+  }
+
+  &:hover {
+    .add-channel-icon-black {
+      display: none;
+    }
+
+    .add-channel-icon-blue {
+      display: block;
+    }
+
+    .add-channel-text {
+      color: $purple_3;
+    }
+  }
+
+  .center-container {
+    @include dFlex($jc: flex-start, $g: 10px);
+    width: 100%;
+    padding: 4px 20px;
+    // border-radius: 20px;
+    // background-color: $ice_blue;
+  }
+}
+
+
+
+
+
+
 
 .center {
   @include dFlex($jc: center, $ai: center, $g: 16px);

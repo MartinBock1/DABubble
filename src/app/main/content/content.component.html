@@ -3,28 +3,149 @@
 
   <div class="content" [ngClass]="{ 'left-hidden': !isLeftVisible }">
     <div class="left" [ngClass]="{ 'slide-out': !isLeftVisible }">
-      <div class="headline"> 
-        <img class="devspace-logo" src="assets/img/icons/devspace-logo.svg" alt="Devspace Logo">
+      <div class="headline">
+        <img
+          class="devspace-logo"
+          src="assets/img/icons/devspace-logo.svg"
+          alt="Devspace Logo"
+        />
         <h1>Devspace</h1>
         <div class="bg-icon">
-          <img class="edit-square-icon" src="assets/img/icons/edit-square-icon-black.svg" alt="Edit Icon">
-          <img class="edit-square-icon-hover" src="assets/img/icons/edit-square-icon-purple.svg" alt="Edit Icon">
+          <img
+            class="edit-square-icon"
+            src="assets/img/icons/edit-square-icon-black.svg"
+            alt="Edit Icon"
+          />
+          <img
+            class="edit-square-icon-hover"
+            src="assets/img/icons/edit-square-icon-purple.svg"
+            alt="Edit Icon"
+          />
         </div>
       </div>
+      <div class="channels-headline" (click)="toggleChannels()">
+        <div class="channels-headline-container">
+          <div class="icon-down" [ngClass]="{ active: isChannelVisible }">
+            <img
+              class="drop-down-icon-black"
+              src="assets/img/icons/arrow-drop-down-icon-black.svg"
+              alt="Drop Down Icon"
+            />
+            <img
+              class="drop-down-icon-blue"
+              src="assets/img/icons/arrow-drop-down-icon-blue.svg"
+              alt="Drop Down Icon"
+            />
+          </div>
+          <div class="icon-right" [ngClass]="{ active: !isChannelVisible }">
+            <img
+              class="drop-down-icon-right-black"
+              src="assets/img/icons/arrow-drop-down-icon-black.svg"
+              alt="Drop Down Icon"
+            />
+            <img
+              class="drop-down-icon-right-blue"
+              src="assets/img/icons/arrow-drop-down-icon-blue.svg"
+              alt="Drop Down Icon"
+            />
+          </div>
+          <div class="channels-headline-text">
+            <div class="channels-icon">
+              <img
+                class="icon-black"
+                src="assets/img/icons/channels-icon-black.svg"
+                alt="Channels Icon"
+              />
+              <img
+                class="icon-blue"
+                src="assets/img/icons/channels-icon-blue.svg"
+                alt="Channels Icon"
+              />
+            </div>
+            <p class="headline-text">Channels</p>
+          </div>
+        </div>
+        <div class="add-channel">
+          <img
+            class="plus-icon"
+            src="assets/img/icons/plus-icon.svg"
+            alt="Plus Icon"
+          />
+          <img
+            class="plus-icon-hover"
+            src="assets/img/icons/plus-icon-hover.svg"
+            alt="Plus Icon Hover"
+          />
+        </div>
+      </div>
+      
+      @if(isChannelVisible) {
+      <div class="channels">
+        <div class="channel-names">
+          <div class="icon-down"></div>
+          <div class="channel-names-center-container">
+            <img
+              class="hashtag-icon-black"
+              src="assets/img/icons/hashtag-icon-black.svg"
+              alt="Hashtag Icon"
+            />
+            <img
+              class="hashtag-icon-blue"
+              src="assets/img/icons/hashtag-icon-blue.svg"
+              alt="Hashtag Icon"
+            />
+            <p>Entwicklerteam</p>
+          </div>
+        </div>
+        <div class="channel-add">
+          <div class="icon-down"></div>
+          <div class="center-container">
+            <img
+              class="add-channel-icon-black"
+              src="assets/img/icons/add-channel-icon-black.svg"
+              alt="Add Channel Icon"
+            />
+            <img
+              class="add-channel-icon-blue"
+              src="assets/img/icons/add-channel-icon-blue.svg"
+              alt="Add Channel Icon"
+            />
+            <p class="add-channel-text">Channel hinzufügen</p>
+          </div>
+          <!-- <div class="add-channel"></div> -->
+        </div>
+      </div>
+      }
     </div>
-    <div class="workspace-menu-buttons" >
+    <div class="workspace-menu-buttons">
       <div class="button-close" (click)="toggleLeftPanel()">
-          @if(isLeftVisible) {
-          <img class="menu-close" src="assets/img/workspace-menu-close.svg" alt="Workspace Menu Close">
-          <img class="menu-close-hover" src="assets/img/workspace-menu-close-hover.svg" alt="Workspace Menu Close Hover">
+        @if(isLeftVisible) {
+        <img
+          class="menu-close"
+          src="assets/img/workspace-menu-close.svg"
+          alt="Workspace Menu Close"
+        />
+        <img
+          class="menu-close-hover"
+          src="assets/img/workspace-menu-close-hover.svg"
+          alt="Workspace Menu Close Hover"
+        />
         }
-        </div>
-        <div class="button-open" (click)="toggleLeftPanel()">
-          @if(!isLeftVisible) {
-          <img class="menu-open" src="assets/img/workspace-menu-open.svg" alt="Workspace Menu Open">
-          <img class="menu-open-hover" src="assets/img/workspace-menu-open-hover.svg" alt="Workspace Menu Open Hover">
+      </div>
+      <div class="button-open" (click)="toggleLeftPanel()">
+        @if(!isLeftVisible) {
+        <img
+          class="menu-open"
+          src="assets/img/workspace-menu-open.svg"
+          alt="Workspace Menu Open"
+        />
+        <img
+          class="menu-open-hover"
+          src="assets/img/workspace-menu-open-hover.svg"
+          alt="Workspace Menu Open Hover"
+        />
         }
-        </div>
+      </div>
     </div>
 
     <div class="center">Test</div>
