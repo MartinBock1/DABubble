@@ -1,6 +1,6 @@
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 
@@ -24,6 +24,7 @@ export class PasswordResetComponent {
   router = inject(Router);
 
   email: string = '';
+  emailError: string = '';
   focusedInput: string = '';
   isEmailValid: boolean = true;
   eMailPattern = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/;
@@ -57,8 +58,12 @@ export class PasswordResetComponent {
    * Bei Erfolg wird ein Bestätigungs-Overlay angezeigt und zur Login-Seite weitergeleitet.
    */
   async forgotPassword() {
-    if (this.eMailPattern.test(this.email)) {
-      this.isEmailValid = true;
+    const isEmailValid = this.eMailPattern.test(this.email);
+    if (!isEmailValid) {
+      this.emailError = '*Diese E-Mail-Adresse ist leider ungültig.';
+    }
+    if (isEmailValid) {
+      // this.isEmailValid = true;
       try {
         await this.authService.passwordReset(this.email);
         this.showOverlay = true;
@@ -72,5 +77,17 @@ export class PasswordResetComponent {
     } else {
       this.isEmailValid = false;
     }
+  }
+
+  /**
+   * Handles changes to the email input field.
+   * Clears the email error message and validates the email.
+   *
+   * Behandelt Änderungen im E-Mail-Eingabefeld.
+   * Löscht die E-Mail-Fehlermeldung und validiert die E-Mail.
+   */
+  onEmailChange() {
+    this.emailError = '';
+    this.isEmailValid = this.eMailPattern.test(this.email);
   }
 }

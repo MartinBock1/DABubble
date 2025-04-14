@@ -18,9 +18,10 @@ import {
   signOut,
   onAuthStateChanged,
   User as FirebaseUser,
+  updatePassword as firebaseUpdatePassword,
 } from 'firebase/auth';
 import { UserService } from './user.service';
-import { User } from '../../interfaces/user';
+import { User } from './../interfaces/user';
 
 /**
  * AuthService is responsible for handling authentication-related operations,
@@ -194,6 +195,21 @@ export class AuthService {
     return sendPasswordResetEmail(this.auth, email).then(() => {
       // console.log('Passwort-Reset-E-Mail gesendet!');
     });
+  }
+
+  async updatePassword(newPassword: string): Promise<void> {
+    const currentUser = this.auth.currentUser;
+    if (currentUser) {
+      try {
+        await firebaseUpdatePassword(currentUser, newPassword);
+        console.log('Passwort erfolgreich aktualisiert');
+      } catch (error) {
+        console.error('Fehler beim Aktualisieren des Passworts:', error);
+        throw error; 
+      }
+    } else {
+      console.log('Kein Benutzer angemeldet');
+    }
   }
 
   /**

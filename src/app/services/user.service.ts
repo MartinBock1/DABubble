@@ -80,6 +80,11 @@ export class UserService {
     email: string;
     avatar: string;
   }): Promise<void> {
+    const userExists = await this.checkIfUserExists(userData.uid);
+    if (userExists) {
+      console.log('Benutzer existiert bereits');
+      return;
+    }
     await addDoc(this.usersCollection, userData);
   }
 
@@ -92,14 +97,19 @@ export class UserService {
    * @returns {Promise<any>} - Returns a promise that resolves with the user data if the user exists, otherwise null.
    */
   async getUserByUID(uid: string): Promise<any> {
-    const q = query(this.usersCollection, where('uid', '==', uid));
-    const querySnapshot = await getDocs(q);
-    if (!querySnapshot.empty) {
-      const user = querySnapshot.docs[0].data();
-      this.currentUserSubject.next(user);
-      return user;
+    try {
+      const q = query(this.usersCollection, where('uid', '==', uid));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        const user = querySnapshot.docs[0].data();
+        this.currentUserSubject.next(user);
+        return user;
+      }
+      return null;
+    } catch (error) {
+      console.error('Fehler beim Abrufen des Benutzers:', error);
+      return null;
     }
-    return null;
   }
 
   /**
@@ -110,6 +120,10 @@ export class UserService {
    * @param {any} user - The user object to set as the current user.
    */
   setCurrentUser(user: any): void {
-    this.currentUserSubject.next(user);
+    if (user) {
+      this.currentUserSubject.next(user);
+    } else {
+      console.warn('Ungültige Benutzerdaten.');
+    }
   }
 }
