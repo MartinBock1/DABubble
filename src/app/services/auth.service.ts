@@ -205,7 +205,7 @@ export class AuthService {
         console.log('Passwort erfolgreich aktualisiert');
       } catch (error) {
         console.error('Fehler beim Aktualisieren des Passworts:', error);
-        throw error; 
+        throw error;
       }
     } else {
       console.log('Kein Benutzer angemeldet');

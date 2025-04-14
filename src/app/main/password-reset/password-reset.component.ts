@@ -60,23 +60,42 @@ export class PasswordResetComponent {
   async forgotPassword() {
     const isEmailValid = this.eMailPattern.test(this.email);
     if (!isEmailValid) {
-      this.emailError = '*Diese E-Mail-Adresse ist leider ungültig.';
+      this.emailError = '*This e-mail address is invalid.';
     }
     if (isEmailValid) {
       // this.isEmailValid = true;
       try {
         await this.authService.passwordReset(this.email);
         this.showOverlay = true;
-        setTimeout(() => {
-          this.showOverlay = false;
-          this.router.navigate(['/login']);
-        }, 3000);
+        this.timeout();
       } catch (error) {
         console.error('Error sending password reset email:', error);
       }
     } else {
       this.isEmailValid = false;
     }
+  }
+
+  /**
+   * Sets a timeout to hide the overlay and navigate to the login page after 3 seconds.
+   *
+   * This function hides the overlay (sets `showOverlay` to false) and then navigates the user
+   * to the login page (`/login`) after a delay of 3 seconds.
+   *
+   * @returns {void} - No value is returned. The action happens after the timeout.
+   *
+   * Setzt einen Timeout, um das Overlay auszublenden und nach 3 Sekunden zur Login-Seite zu navigieren.
+   *
+   * Diese Funktion blendet das Overlay aus (setzt `showOverlay` auf false) und navigiert den Benutzer
+   * nach einer Verzögerung von 3 Sekunden zur Login-Seite (`/login`).
+   *
+   * @returns {void} - Es wird kein Wert zurückgegeben. Die Aktion erfolgt nach dem Timeout.
+   */
+  timeout() {
+    setTimeout(() => {
+      this.showOverlay = false;
+      this.router.navigate(['/login']);
+    }, 3000);
   }
 
   /**
