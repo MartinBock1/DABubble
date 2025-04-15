@@ -52,7 +52,7 @@ section {
 }
 
 .left {
-  @include dFlex($jc: flex-start, $ai: center, $g: 16px);
+  @include dFlex($jc: flex-start, $ai: center, $g: 25px);
   flex-direction: column;
   height: calc(100% - 50px);
   width: 19.1vw;
@@ -111,12 +111,15 @@ section {
   }
 }
 
-.channels-headline {
+.channels-headline,
+.messages-headline {
   @include dFlex($jc: space-between);
   width: 100%;
   cursor: pointer;
+  position: relative;
 
-  .channels-headline-container {
+  .channels-headline-container,
+  .messages-headline-container {
     @include dFlex();
     flex: 1;
 
@@ -160,13 +163,15 @@ section {
       }
     }
 
-    .channels-headline-text {
+    .channels-headline-text,
+    .messages-headline-text {
       @include dFlex($jc: flex-start, $g: 10px);
       @include font($fs: 20px, $fw: 700);
       flex: 1;
       padding-left: 15px;
 
-      .channels-icon {
+      .channels-icon,
+      .messages-icon {
         @include dFlex();
       }
     }
@@ -275,7 +280,48 @@ section {
 
 
 
+.messages {
+  @include dFlex($jc: flex-start, $ai: flex-start, $g: 10px);
+  flex-direction: column;
+  width: 100%;
 
+  .messages-user {
+    @include dFlex($jc: flex-start);
+    @include font($fs: 18px, $fw: 400);
+    flex: 1;
+
+    .messages-user-container {
+      @include dFlex($jc: flex-start, $g: 15px);
+      width: 100%;
+      padding: 4px 20px;
+
+      .avatar-icon {
+        position: relative;
+        width: 50px;
+        height: 50px;
+
+        .user-avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+
+        .active {
+          position: absolute;
+          background-color: $online;
+          right: 1px;
+          bottom: 0px;
+          border-radius: 50%;
+          width: 14px;
+          height: 14px;
+          border: 2px #edefff solid;
+          z-index: 5;
+        }
+      }
+
+    }
+  }
+}
 
 
 

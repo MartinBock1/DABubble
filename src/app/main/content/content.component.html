@@ -77,8 +77,7 @@
             alt="Plus Icon Hover"
           />
         </div>
-      </div>
-      
+      </div>     
       @if(isChannelVisible) {
       <div class="channels">
         <div class="channel-names">
@@ -114,10 +113,75 @@
           </div>
           <!-- <div class="add-channel"></div> -->
         </div>
-      </div>
-      }
+      </div>      
+      }       
+
+      <div class="messages-headline" (click)="toggleMessages()">
+        <div class="messages-headline-container">
+          <div class="icon-down" [ngClass]="{ active: isMessagesVisible }">
+            <img
+              class="drop-down-icon-black"
+              src="assets/img/icons/arrow-drop-down-icon-black.svg"
+              alt="Drop Down Icon"
+            />
+            <img
+              class="drop-down-icon-blue"
+              src="assets/img/icons/arrow-drop-down-icon-blue.svg"
+              alt="Drop Down Icon"
+            />
+          </div>
+          <div class="icon-right" [ngClass]="{ active: !isMessagesVisible }">
+            <img
+              class="drop-down-icon-right-black"
+              src="assets/img/icons/arrow-drop-down-icon-black.svg"
+              alt="Drop Down Icon"
+            />
+            <img
+              class="drop-down-icon-right-blue"
+              src="assets/img/icons/arrow-drop-down-icon-blue.svg"
+              alt="Drop Down Icon"
+            />
+          </div>
+          <div class="messages-headline-text">
+            <div class="messages-icon">
+              <img
+                class="icon-black"
+                src="assets/img/icons/account-circle-icon-black.svg"
+                alt="Channels Icon"
+              />
+              <img
+                class="icon-blue"
+                src="assets/img/icons/account-circle-icon-blue.svg"
+                alt="Channels Icon"
+              />
+            </div>
+            <p class="headline-text">Direktnachrichten</p>
+          </div>
+        </div>
+        <div class="add-channel"></div>
+      </div>     
+      @if(isMessagesVisible) {
+      <div class="messages">
+        <div class="messages-user">
+          <div class="icon-down"></div>
+          <div class="messages-user-container">
+            <div class="avatar-icon">
+              <img
+                class="user-avatar"
+                src="assets/img/char-icons/elias-neumann.svg"
+                alt="User Avatar"
+              />    
+              <span class="active"></span>  
+            </div>
+            <p>Tester (Du)</p>
+          </div>
+        </div>
+        
+        
+      </div>      
+      }       
     </div>
-    <div class="workspace-menu-buttons">
+    <!-- <div class="workspace-menu-buttons">
       <div class="button-close" (click)="toggleLeftPanel()">
         @if(isLeftVisible) {
         <img
@@ -146,7 +210,7 @@
         />
         }
       </div>
-    </div>
+    </div> -->
 
     <div class="center">Test</div>
     <div class="right">Test</div>
